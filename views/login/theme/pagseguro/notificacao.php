@@ -9,7 +9,7 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
   $url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/notifications/' . $_POST['notificationCode'] . '?email=' . $email . '&token=' . $token;
 
   $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
   $transaction= curl_exec($curl);
   curl_close($curl);
