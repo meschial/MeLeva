@@ -7,7 +7,7 @@ define("SITE", [
     "name" => "MeLeva",
     "desc" => "Envie suas encomendas com MeLeva",
     "locale" => "pt-BR",
-    "root" => "https://localhost/tcc"
+    "root" => "https://melevaprojeto.tk"
 ]);
 
 define("CONF_VIEW_IMG", __DIR__ . "/../");

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="MeLeva">
+  <component name="PublishConfigData" serverName="MeLeva" uploadOnCheckin="624cf159-8a04-46fc-8c40-049f461345db">
     <serverData>
       <paths name="MeLeva">
         <serverdata>
@@ -10,5 +10,6 @@
         </serverdata>
       </paths>
     </serverData>
+    <option name="myUploadOnCheckinName" value="MeLeva" />
   </component>
 </project>
