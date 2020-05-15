@@ -18,16 +18,20 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
     print_r("nao autorizado");
     exit;
   }
-  $xml = simplexml_load_string($transaction);
+
+  $xml = json_decode(json_encode(simplexml_load_string($transaction)));
 
   $reference = $xml->reference;
   $status = $xml->status;
 
-  if (!empty($status)){
-    $venda = (new \Source\Models\ContrataRota())->findById($reference);
-    $venda->status = $status;
+
+  if (!empty($xml->reference)){
+    $venda = (new \Source\Models\ContrataRota())->findById($xml->reference);
+
+    $venda->status = $xml->status;
     $venda->save();
   }
+
 
 }
 
