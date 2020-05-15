@@ -483,21 +483,6 @@ class App extends Controller
     ]);
   }
 
-  public function teste():void
-  {
-    $head = $this->seo->optimize(
-      "Bem vindo(a)",
-      site("desc"),
-      $this->router->route("app.iniciocliente"),
-      routeImage("Cliente")
-    )->render();
-
-    echo $this->view->render("theme/pagamentos/teste",[
-      "head" => $head,
-      "user" => $this->user
-    ]);
-  }
-
   public function cancelarrota()
   {
 

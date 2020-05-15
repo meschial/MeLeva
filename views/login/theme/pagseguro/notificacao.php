@@ -21,17 +21,11 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
 
   $xml = json_decode(json_encode(simplexml_load_string($transaction)));
 
-  $reference = $xml->reference;
-  $status = $xml->status;
-
-
   if (!empty($xml->reference)){
     $venda = (new \Source\Models\ContrataRota())->findById($xml->reference);
-
     $venda->status = $xml->status;
     $venda->save();
   }
-
 
 }
 

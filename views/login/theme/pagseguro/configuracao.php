@@ -9,7 +9,7 @@ if ($sandbox) {
     define("SCRIPT_PAGSEGURO", "https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js");
     define("EMAIL_LOJA", "E-mail de suporte pós venda");
     define("MOEDA_PAGAMENTO", "BRL");
-    define("URL_NOTIFICACAO", "https://sualoja.com.br/notifica.html");
+    define("URL_NOTIFICACAO", "https://melevaprojeto.tk/me/notificacao");
 } else {
     //Credenciais do PagSeguro
     define("EMAIL_PAGSEGURO", "Seu e-mail do PagSeguro");
@@ -18,7 +18,7 @@ if ($sandbox) {
     define("SCRIPT_PAGSEGURO", "https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js");
     define("EMAIL_LOJA", "E-mail de suporte pós venda");
     define("MOEDA_PAGAMENTO", "BRL");
-    define("URL_NOTIFICACAO", "https://sualoja.com.br/notifica.html");
+    define("URL_NOTIFICACAO", "https://melevaprojeto.tk/me/notificacao");
 }
 
 //Config SANDBOX or PRODUCTION environment
