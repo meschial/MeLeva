@@ -273,7 +273,7 @@ include 'configuracao.php';
 
         $.ajax({
             //URL completa do local do arquivo responsável em buscar o ID da sessão
-            url: 'https://localhost/tcc/me/postp',
+            url: 'https://melevaprojeto.tk/me/postp',
             type: 'POST',
             dataType: 'json',
             success: function (retorno) {
@@ -431,7 +431,7 @@ include 'configuracao.php';
 
                 $.ajax({
                     method: "POST",
-                    url: "https://localhost/tcc/me/finalizar",
+                    url: "https://melevaprojeto.tk/me/finalizar",
                     data: dados,
                     dataType: 'json',
                     success: function(retorna){
