@@ -13,7 +13,7 @@ function curlExec($url, $post = NULL, array $header = array()){
   }
 
   //Ignore SSL
-  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
   $data = curl_exec($ch);
   curl_close($ch);

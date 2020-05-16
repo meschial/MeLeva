@@ -1,7 +1,6 @@
 <?php
+require_once('config.php');
 require_once('utils.php');
-$PAGSEGURO_EMAIL = 'formatacaoumuarama@gmail.com';
-$PAGSEGURO_TOKEN = '1045640749614566A06AA642AD42B89E';
 
 if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transaction'){
 
@@ -11,7 +10,7 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
   $url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/notifications/' . $_POST['notificationCode'] . '?email=' . $email . '&token=' . $token;
 
   $curl = curl_init($url);
-  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, true);
+  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
   curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
   $transaction= curl_exec($curl);
   curl_close($curl);
@@ -20,17 +19,35 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
     print_r("nao autorizado");
     exit;
   }
-
   $xml = simplexml_load_string($transaction);
 
   $reference = $xml->reference;
   $status = $xml->status;
 
-
-  if (!empty($xml->reference)){
-    $venda = (new \Source\Models\ContrataRota())->findById($reference);
-    $venda->status = $xml->status;
-    $venda->save();
+  if (!empty($status)){
+    include_once 'config.php';
+    $sql = "select * from venda where id = '$reference'";
+    $consulta = $pdo->prepare($sql);
+    $consulta->execute();
+    $linha = $consulta->fetch(PDO::FETCH_OBJ);
+    if($linha->reference){
+      $data = [
+        'status' => $status,
+        'reference' => $reference,
+      ];
+      $sql = "UPDATE venda SET status=:status WHERE id=:reference";
+      $stmt= $pdo->prepare($sql);
+      $stmt->execute($data);
+    }else{
+      $pdo->beginTransaction();
+      $sql = "insert into venda (id, status)
+			values 
+			(NULL, :status)";
+      $consulta = $pdo->prepare( $sql );
+      $consulta->bindValue(":status",$status);
+      $consulta->execute();
+      $pdo->commit();
+    }
   }
 
 }
