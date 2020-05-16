@@ -26,7 +26,7 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
   $idPedido = $transaction->reference;
 
 
-  if (!empty($xml->reference)){
+  if (!empty($idPedido)){
     $venda = (new \Source\Models\ContrataRota())->findById($idPedido);
     $venda->status = $status;
     $venda->save();
