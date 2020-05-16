@@ -24,31 +24,11 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
   $reference = $xml->reference;
   $status = $xml->status;
 
-  if (!empty($status)){
-    include_once 'config.php';
-    $sql = "select * from venda where id = '$reference'";
-    $consulta = $pdo->prepare($sql);
-    $consulta->execute();
-    $linha = $consulta->fetch(PDO::FETCH_OBJ);
-    if($linha->reference){
-      $data = [
-        'status' => $status,
-        'reference' => $reference,
-      ];
-      $sql = "UPDATE venda SET status=:status WHERE id=:reference";
-      $stmt= $pdo->prepare($sql);
-      $stmt->execute($data);
-    }else{
-      $pdo->beginTransaction();
-      $sql = "insert into venda (id, status)
-			values 
-			(NULL, :status)";
-      $consulta = $pdo->prepare( $sql );
-      $consulta->bindValue(":status",$status);
-      $consulta->execute();
-      $pdo->commit();
-    }
-  }
+if (!empty($status)){
+  $venda = (new \Source\Models\ContrataRota())->findById($reference);
+  $venda->status = $status;
+  $venda->save();
+}
 
 }
 
