@@ -131,7 +131,7 @@ abstract class DataLayer
         return $this;
     }
 
-  public function innerVenda(?string $terms = null, ?string $params = null, string $columns = "*")
+  public function innerVenda(?string $terms = null, ?string $params = null, string $columns = "*"): DataLayer
   {
     if ($terms) {
       $this->statement = "SELECT {$columns} FROM {$this->entity} 
@@ -148,7 +148,7 @@ abstract class DataLayer
     return $this;
   }
 
-  public function innerMotorista(?string $terms = null, ?string $params = null, string $columns = "*")
+  public function innerMotorista(?string $terms = null, ?string $params = null, string $columns = "*"): DataLayer
   {
     if ($terms) {
       $this->statement = "SELECT {$columns} FROM {$this->entity} 

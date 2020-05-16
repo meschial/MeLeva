@@ -220,7 +220,7 @@ class App extends Controller
       $venda->date = date('Y-m-d');
       $venda->nome = $data['nome'];
       $venda->descricao = $data['descricao'];
-      $venda->status = 'A';
+      $venda->status = '1';
       $venda->rota_id = $data['id_rota'];
       $venda->mot_id = $data['id_mot'];
       $venda->login_id = $_SESSION['user'];
@@ -414,8 +414,8 @@ class App extends Controller
     echo $this->view->render("theme/pagamentos/listaderotas",[
       "head" => $head,
       "user" => $this->user,
-      "rotas" => (new \Source\Models\ContrataRota())
-        ->innerVenda("venda.status = :s AND venda.login_id = :lo","s=A & lo={$_SESSION['user']}","*, venda.id as id_venda, date_format(data_inicio, '%d/%m/%Y') data_inicio")
+      "rotas" => (new ContrataRota())
+        ->innerVenda("venda.status = :s AND venda.login_id = :lo","s=1  & lo={$_SESSION['user']}","*, venda.id as id_venda, date_format(data_inicio, '%d/%m/%Y') data_inicio")
         ->fetch(true)
     ]);
   }

@@ -1,14 +1,61 @@
 <?php
 
-/*
+$teste = false;
+
+if ($teste){
+  define("SITE", [
+    "name" => "MeLeva",
+    "desc" => "Envie suas encomendas com MeLeva",
+    "locale" => "pt-BR",
+    "root" => "https://localhost/meleva"
+  ]);
+  /*
+ * DB CONEXÃO
+ */
+  define("DATA_LAYER_CONFIG", [
+    "driver" => "mysql",
+    "host" => "localhost",
+    "port" => "3306",
+    "dbname" => "tcc",
+    "username" => "root",
+    "passwd" => "",
+    "options" => [
+      PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+      PDO::ATTR_CASE => PDO::CASE_NATURAL
+    ]
+  ]);
+}else{
+  /*
  * SITE CONFIG
  */
-define("SITE", [
-  "name" => "MeLeva",
-  "desc" => "Envie suas encomendas com MeLeva",
-  "locale" => "pt-BR",
-  "root" => "https://melevaprojeto.tk"
-]);
+  define("SITE", [
+    "name" => "MeLeva",
+    "desc" => "Envie suas encomendas com MeLeva",
+    "locale" => "pt-BR",
+    "root" => "https://melevaprojeto.tk"
+  ]);
+
+  /*
+  * DB CONEXÃO
+  */
+  define("DATA_LAYER_CONFIG", [
+    "driver" => "mysql",
+    "host" => "localhost",
+    "port" => "3306",
+    "dbname" => "melevapr_tcc",
+    "username" => "melevapr_tcc",
+    "passwd" => "tswW+r?yCY)U",
+    "options" => [
+      PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
+      PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+      PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
+      PDO::ATTR_CASE => PDO::CASE_NATURAL
+    ]
+  ]);
+}
+
 
 define("CONF_VIEW_IMG", __DIR__ . "/../");
 
@@ -19,26 +66,6 @@ define("CONF_VIEW_IMG", __DIR__ . "/../");
 if ($_SERVER["SERVER_NAME"] == "localhost"){
   require __DIR__."/Minify.php";
 }
-
-
-/*
- * DB CONEXÃO
- */
-define("DATA_LAYER_CONFIG", [
-  "driver" => "mysql",
-  "host" => "localhost",
-  "port" => "3306",
-  "dbname" => "melevapr_tcc",
-  "username" => "melevapr_tcc",
-  "passwd" => "tswW+r?yCY)U",
-  "options" => [
-    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
-    PDO::ATTR_CASE => PDO::CASE_NATURAL
-  ]
-]);
-
 /*
  * SOCIAL CONFIG
  */

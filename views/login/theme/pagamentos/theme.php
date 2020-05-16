@@ -51,15 +51,15 @@
       <div class="col-lg-4">
         <div class="sidebar">
           <div class="single-item mb-4">
-            <h4 class="mb-4">Suas Rotas</h4>
+            <h4 class="mb-4">Seus Pagamentos</h4>
             <a href="<?= $router->route("app.listaderotas"); ?>" class="sidebar-btn mb-3">
-              <strong>Rotas em Andamento</strong>
+              <strong>Pagamentos em Andamento</strong>
             </a>
             <a href="<?= $router->route("app.rotascanceladas"); ?>" class="sidebar-btn mb-3">
-              <strong>Rotas Canceladas</strong>
+              <strong>Pagamentos Cancelados</strong>
             </a>
             <a href="" class="sidebar-btn mb-3">
-              <strong>Rotas Canceladas</strong>
+              <strong>Pagamentos finalizados</strong>
             </a>
             <a href="" class="sidebar-btn mb-3">
               <strong>Seus Saldos</strong>
