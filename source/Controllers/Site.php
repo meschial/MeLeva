@@ -53,7 +53,7 @@ class Site extends Controller
     /**
      *
      */
-    public function rotas():void
+    public function rotas(): void
     {
         $head = $this->seo->optimize(
             "Bem vindo(a)",

@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('configuracao.php');
 require_once('utils.php');
 
 if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transaction'){
