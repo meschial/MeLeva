@@ -1,10 +1,8 @@
 <?php
+require_once('configuracao.php');
 require_once('utils.php');
 
 if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transaction'){
-
-  $PAGSEGURO_EMAIL = 'formatacaoumuarama@gmail.com';
-  $PAGSEGURO_TOKEN = '1045640749614566A06AA642AD42B89E';
 
   $email = $PAGSEGURO_EMAIL;
   $token = $PAGSEGURO_TOKEN;
@@ -27,9 +25,30 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
   $status = $xml->status;
 
   if (!empty($status)){
-    $venda = (new \Source\Models\ContrataRota())->findById($reference);
-    $venda->status = $status;
-    $venda->save();
+    include_once 'configuracao.php';
+    $sql = "select * from pagamento where reference = '$reference'";
+    $consulta = $pdo->prepare($sql);
+    $consulta->execute();
+    $linha = $consulta->fetch(PDO::FETCH_OBJ);
+    if($linha->reference){
+      $data = [
+        'status' => $status,
+        'reference' => $reference,
+      ];
+      $sql = "UPDATE pagamento SET status=:status, reference=:reference WHERE reference=:reference";
+      $stmt= $pdo->prepare($sql);
+      $stmt->execute($data);
+    }else{
+      $pdo->beginTransaction();
+      $sql = "insert into pagamento (id, reference, status)
+			values 
+			(NULL, :reference, :status)";
+      $consulta = $pdo->prepare( $sql );
+      $consulta->bindValue(":reference",$reference);
+      $consulta->bindValue(":status",$status);
+      $consulta->execute();
+      $pdo->commit();
+    }
   }
 
 }

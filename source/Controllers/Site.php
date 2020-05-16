@@ -44,12 +44,6 @@ class Site extends Controller
         ]);
     }
 
-  public function notificacao()
-  {
-    echo $this->view->render("theme/pagseguro/notificacao",[
-    ]);
-  }
-
     /**
      *
      */

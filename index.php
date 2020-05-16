@@ -15,8 +15,6 @@ $router->namespace("Source\Controllers");
 $router->group(null);
 $router->get("/", "Site:inicio", "site.inicio");
 $router->get("/rotas", "Site:rotas", "site.rotas");
-$router->get("/notificacao", "Site:notificacao", "site.notificacao");
-$router->get("/notificacao", "Site:notificacao", "site.notificacao");
 
 $router->group("/admin");
 $router->get("/", "Admin:home", "admin.home");
@@ -107,6 +105,8 @@ $router->get("/login", "Web:login", "web.login");
 $router->get("/cadastrar", "Web:cadastrar", "web.cadastrar");
 $router->get("/recuperar", "Web:forget", "web.forget");
 $router->get("/senha/{email}/{forget}", "Web:reset", "web.reset");
+$router->get("/notificacao", "Web:notificacao", "web.notificacao");
+$router->get("/notificacao", "Web:notificacao", "web.notificacao");
 
 /*
  * POST LOGIN
