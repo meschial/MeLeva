@@ -58,6 +58,10 @@ $router->post("/salvarlogin", "admin:salvarlogin", "admin.salvarlogin");
 /*
  * PROTEGIDOS GET
  */
+$router->group("/noti");
+$router->get("/notificacao", "Notificacao:notificacao", "app.noti");
+$router->post("/notificacao", "Notificacao:notificacao", "app.noti");
+
 $router->group("/me");
 $router->get("/", "App:iniciocliente", "app.iniciocliente");
 $router->get("/documentos", "App:home", "app.home");
