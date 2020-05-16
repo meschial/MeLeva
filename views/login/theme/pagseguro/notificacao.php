@@ -1,6 +1,13 @@
 <?php
+
 require_once('configuracao.php');
 require_once('utils.php');
+
+$name = 'arquivo.txt';
+$text = "\n" . 'notificacao recebida em ' . date('Y-m-d') . "\n";
+$file = fopen($name, 'a');
+fwrite($file, $text);
+fclose($file);
 
 if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transaction'){
 
@@ -19,38 +26,28 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
     print_r("nao autorizado");
     exit;
   }
-  $xml = simplexml_load_string($transaction);
+  $transaction = simplexml_load_string($transaction);
 
-  $reference = $xml->reference;
-  $status = $xml->status;
+  $status = $transaction->status;
+  $idPedido = $transaction->reference;
+  $data = $transaction->lastEventDate;
+  $codigoTransacao = $transaction->code;
+  $metodoPagamentoType = $transaction->paymentMethod->type;
+  $metodoPagamentoCode = $transaction->paymentMethod->code;
 
-  if (!empty($status)){
-    include_once 'configuracao.php';
-    $sql = "select * from pagamento where reference = '$reference'";
-    $consulta = $pdo->prepare($sql);
-    $consulta->execute();
-    $linha = $consulta->fetch(PDO::FETCH_OBJ);
-    if($linha->reference){
-      $data = [
-        'status' => $status,
-        'reference' => $reference,
-      ];
-      $sql = "UPDATE pagamento SET status=:status, reference=:reference WHERE reference=:reference";
-      $stmt= $pdo->prepare($sql);
-      $stmt->execute($data);
-    }else{
-      $pdo->beginTransaction();
-      $sql = "insert into pagamento (id, reference, status)
-			values 
-			(NULL, :reference, :status)";
-      $consulta = $pdo->prepare( $sql );
-      $consulta->bindValue(":reference",$reference);
-      $consulta->bindValue(":status",$status);
-      $consulta->execute();
-      $pdo->commit();
-    }
-  }
+  $name = 'arquivo.txt';
+  // $text = var_export($_POST, true);
+  $text = "\n" . 'status = ' . $status . ' || id de referencia = ' . $idPedido . ' || data de transacao = ' . $data . ' || codigo de trasacao = ' . $codigoTransacao . ' || metodo de pagamento (tipo) = ' . $metodoPagamentoType . ' || metodo de pagamento (codigo) = ' . $metodoPagamentoCode;
+  $file = fopen($name, 'a');
+  fwrite($file, $text);
+  fclose($file);
 
+} else{
+  $name = 'arquivo.txt';
+  $text = 'nao foi possivel gravar no arquivo.txt';
+  $file = fopen($name, 'a');
+  fwrite($file, $text);
+  fclose($file);
 }
 
 ?>
