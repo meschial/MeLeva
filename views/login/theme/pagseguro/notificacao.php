@@ -3,8 +3,11 @@ require_once('utils.php');
 
 if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transaction'){
 
-  $email = 'formatacaoumuarama@gmail.com';
-  $token = '1045640749614566A06AA642AD42B89E';
+  $PAGSEGURO_EMAIL = 'formatacaoumuarama@gmail.com';
+  $PAGSEGURO_TOKEN = '1045640749614566A06AA642AD42B89E';
+
+  $email = $PAGSEGURO_EMAIL;
+  $token = $PAGSEGURO_TOKEN;
 
   $url = 'https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/notifications/' . $_POST['notificationCode'] . '?email=' . $email . '&token=' . $token;
 
@@ -14,14 +17,21 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
   $transaction= curl_exec($curl);
   curl_close($curl);
 
-  $xml = json_decode(json_encode(simplexml_load_string($transaction)));
+  if($transaction == 'Unauthorized'){
+    print_r("nao autorizado");
+    exit;
+  }
+  $xml = simplexml_load_string($transaction);
 
+  $reference = $xml->reference;
+  $status = $xml->status;
 
-  if (!empty($xml->reference)){
-    $venda = (new \Source\Models\ContrataRota())->findById($xml->reference);
-    $venda->status = $xml->status;
+  if (!empty($status)){
+    $venda = (new \Source\Models\ContrataRota())->findById($reference);
+    $venda->status = $status;
     $venda->save();
   }
+
 }
 
 ?>
