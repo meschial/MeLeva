@@ -34,9 +34,13 @@ $codigoTransacao = $transaction->code;
 $metodoPagamentoType = $transaction->paymentMethod->type;
 $metodoPagamentoCode = $transaction->paymentMethod->code;
 
-$venda = (new \Source\Models\ContrataRota())->findById($idPedido);
-$venda->status = $status;
-$venda->save();
+  $xml = json_decode(json_encode(simplexml_load_string($transaction)));
+
+  if (!empty($xml->reference)){
+    $venda = (new \Source\Models\ContrataRota())->findById($xml->reference);
+    $venda->status = $xml->status;
+    $venda->save();
+  }
 
 $name = 'arquivo.txt';
 // $text = var_export($_POST, true);
