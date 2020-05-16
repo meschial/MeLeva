@@ -477,11 +477,6 @@ class App extends Controller
 
   }
 
-  public function notificacao()
-  {
-    echo $this->view->render("theme/pagseguro/notificacao",[
-    ]);
-  }
 
   public function cancelarrota()
   {

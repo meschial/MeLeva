@@ -15,6 +15,8 @@ $router->namespace("Source\Controllers");
 $router->group(null);
 $router->get("/", "Site:inicio", "site.inicio");
 $router->get("/rotas", "Site:rotas", "site.rotas");
+$router->get("/notificacao", "Site:notificacao", "site.notificacao");
+$router->get("/notificacao", "Site:notificacao", "site.notificacao");
 
 $router->group("/admin");
 $router->get("/", "Admin:home", "admin.home");
@@ -76,8 +78,7 @@ $router->get("/listaderotas", "App:listaderotas", "app.listaderotas");
 $router->get("/cancelarrota", "App:cancelarrota", "app.cancelarrota");
 $router->get("/rotascanceladas", "App:rotascanceladas", "app.rotascanceladas");
 $router->get("/pagamentorotapagseguro", "App:pagamentorotapagseguro", "app.pagamentorotapagseguro");
-$router->get("/notificacao", "App:notificacao", "app.notificacao");
-$router->post("/notificacao", "App:notificacao", "app.notificacao");
+
 
 
 
