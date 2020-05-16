@@ -25,6 +25,7 @@ if($transaction == 'Unauthorized'){
 print_r("nao autorizado");
 exit;
 }
+  $xml = json_decode(json_encode(simplexml_load_string($transaction)));
 $transaction = simplexml_load_string($transaction);
 
 $status = $transaction->status;
@@ -34,7 +35,7 @@ $codigoTransacao = $transaction->code;
 $metodoPagamentoType = $transaction->paymentMethod->type;
 $metodoPagamentoCode = $transaction->paymentMethod->code;
 
-  $xml = json_decode(json_encode(simplexml_load_string($transaction)));
+
 
   if (!empty($xml->reference)){
     $venda = (new \Source\Models\ContrataRota())->findById($xml->reference);
