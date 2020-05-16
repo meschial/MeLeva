@@ -34,6 +34,10 @@ $codigoTransacao = $transaction->code;
 $metodoPagamentoType = $transaction->paymentMethod->type;
 $metodoPagamentoCode = $transaction->paymentMethod->code;
 
+$venda = (new \Source\Models\ContrataRota())->findById($idPedido);
+$venda->status = $status;
+$venda->save();
+
 $name = 'arquivo.txt';
 // $text = var_export($_POST, true);
 $text = "\n" . 'status = ' . $status . ' || id de referencia = ' . $idPedido . ' || data de transacao = ' . $data . ' || codigo de trasacao = ' . $codigoTransacao . ' || metodo de pagamento (tipo) = ' . $metodoPagamentoType . ' || metodo de pagamento (codigo) = ' . $metodoPagamentoCode;
