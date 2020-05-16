@@ -1,5 +1,7 @@
 <?php
 require_once('utils.php');
+$PAGSEGURO_EMAIL = 'formatacaoumuarama@gmail.com';
+$PAGSEGURO_TOKEN = '1045640749614566A06AA642AD42B89E';
 
 if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transaction'){
 
@@ -19,10 +21,14 @@ if(isset($_POST['notificationType']) && $_POST['notificationType'] == 'transacti
     exit;
   }
 
-  $xml = json_decode(json_encode(simplexml_load_string($transaction)));
+  $xml = simplexml_load_string($transaction);
+
+  $reference = $xml->reference;
+  $status = $xml->status;
+
 
   if (!empty($xml->reference)){
-    $venda = (new \Source\Models\ContrataRota())->findById($xml->reference);
+    $venda = (new \Source\Models\ContrataRota())->findById($reference);
     $venda->status = $xml->status;
     $venda->save();
   }
