@@ -2,6 +2,8 @@
 
 namespace CoffeeCode\Router;
 
+use CoffeeCode\DataLayer\DataLayer;
+
 /**
  * Class CoffeeCode Dispatch
  *
@@ -104,7 +106,7 @@ abstract class Dispatch
     }
 
     /**
-     * @return bool
+     * @return bool|DataLayer
      */
     public function dispatch(): bool
     {
