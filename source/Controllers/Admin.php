@@ -162,14 +162,18 @@ class Admin extends Controller
     ]);
   }
 
-  public function reativarmotorista()
+  public function reativarmotorista($data)
   {
-    if ($_GET['id']){
-      $motorista = (new Motorista())->findById($_GET['id']);
+
+    if (!empty($data['id'])){
+      $motorista = (new Motorista())->findById($data['id']);
       $motorista->ativo = "S";
       if ($motorista->save()){
-        flash('info', 'Motorista ativado');
-        $this->router->redirect('admin.motoristasdesativados');
+        flash("success", "Motorista ativo com sucesso!");
+        echo $this->ajaxResponse("redirect", [
+          "url" => $this->router->route("admin.motoristasdesativados")
+        ]);
+        return;
       }
       echo $this->ajaxResponse("message",[
         "type" => "error",
@@ -177,7 +181,6 @@ class Admin extends Controller
       ]);
       return;
     }
-    $this->router->redirect('admin.motoristasdesativados');
   }
 
   public function todosmotoristas()

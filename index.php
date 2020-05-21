@@ -40,7 +40,9 @@ $router->get("/editarusuario", "Admin:editarUsuario", "admin.editarUsuario");
 $router->get("/detalherota", "Admin:detalherota", "admin.detalherota");
 //PASSANDO ID NA ROTA GET
 $router->get("/desativarmotorista", "admin:desativarmotorista", "admin.desativarmotorista");
-$router->get("/reativarmotorista", "admin:reativarmotorista", "admin.reativarmotorista");
+
+$router->post("/reativarmotorista", "admin:reativarmotorista", "admin.reativarmotorista");
+
 $router->get("/ativarmotorista", "admin:ativarmotorista", "admin.ativarmotorista");
 $router->get("/ativarusuario", "admin:ativarusuario", "admin.ativarusuario");
 $router->get("/desativarota", "admin:desativarota", "admin.desativarota");
