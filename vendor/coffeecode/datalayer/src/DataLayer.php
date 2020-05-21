@@ -251,7 +251,7 @@ abstract class DataLayer
     }
 
     /**
-     * @return bool
+     * @return bool|DataLayer
      */
     public function save(): bool
     {

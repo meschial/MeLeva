@@ -213,6 +213,7 @@ class App extends Controller
       return;
     }// id	valor	date	nome	descricao	status	rota_id	login_id
     if ($data['id_rota']){
+      date_default_timezone_set('America/Sao_Paulo');
       $id = $data['id_rota'];
       $rota = (new NovaRota())->findById($id);
       $venda = (new ContrataRota());
