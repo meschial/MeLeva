@@ -106,7 +106,7 @@ abstract class Dispatch
     }
 
     /**
-     * @return bool|DataLayer
+     * @return bool
      */
     public function dispatch(): bool
     {
