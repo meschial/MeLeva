@@ -87,14 +87,18 @@ class Admin extends Controller
     ]);
   }
 
-  public function desativarmotorista(): void
+  public function desativarmotorista($data)
   {
-    if ($_GET['id']){
-      $motorista = (new Motorista())->findById($_GET['id']);
+
+    if (!empty($data['id'])){
+      $motorista = (new Motorista())->findById($data['id']);
       $motorista->ativo = "D";
       if ($motorista->save()){
-        flash('info', 'Motorista desativado');
-        $this->router->redirect('admin.motoristasativos');
+        flash("success", "Motorista desativado com sucesso!");
+        echo $this->ajaxResponse("redirect", [
+          "url" => $this->router->route("admin.motoristasnaoativos")
+        ]);
+        return;
       }
       echo $this->ajaxResponse("message",[
         "type" => "error",
@@ -102,7 +106,6 @@ class Admin extends Controller
       ]);
       return;
     }
-    $this->router->redirect('admin.motoristasativos');
   }
 
   /**
@@ -126,14 +129,18 @@ class Admin extends Controller
     ]);
   }
 
-  public function ativarmotorista()
+  public function ativarmotorista($data)
   {
-    if ($_GET['id']){
-      $motorista = (new Motorista())->findById($_GET['id']);
+
+    if (!empty($data['id'])){
+      $motorista = (new Motorista())->findById($data['id']);
       $motorista->ativo = "S";
       if ($motorista->save()){
-        flash('info', 'Motorista ativado');
-        $this->router->redirect('admin.motoristasnaoativos');
+        flash("success", "Motorista ativo com sucesso!");
+        echo $this->ajaxResponse("redirect", [
+          "url" => $this->router->route("admin.motoristasnaoativos")
+        ]);
+        return;
       }
       echo $this->ajaxResponse("message",[
         "type" => "error",
@@ -141,7 +148,6 @@ class Admin extends Controller
       ]);
       return;
     }
-    $this->router->redirect('admin.motoristasnaoativos');
   }
 
   public function motoristasdesativados()
@@ -217,14 +223,17 @@ class Admin extends Controller
     ]);
   }
 
-  public function ativarusuario()
+  public function ativarusuario($data)
   {
-    if ($_GET['id']){
-      $motorista = (new User())->findById($_GET['id']);
-      $motorista->ativo = "S";
-      if ($motorista->save()){
-        flash('info', 'Usuario ativado!');
-        $this->router->redirect('admin.usuariosdesativados');
+    if (!empty($data['id'])){
+      $user = (new User())->findById($data['id']);
+      $user->ativo = "S";
+      if ($user->save()){
+        flash("success", "Usuario ativado com sucesso!");
+        echo $this->ajaxResponse("redirect", [
+          "url" => $this->router->route("admin.usuariosdesativados")
+        ]);
+        return;
       }
       echo $this->ajaxResponse("message",[
         "type" => "error",
@@ -232,7 +241,6 @@ class Admin extends Controller
       ]);
       return;
     }
-    $this->router->redirect('admin.usuariosdesativados');
   }
 
   public function todosusuarios()
@@ -449,14 +457,17 @@ class Admin extends Controller
     ]);
   }
 
-  public function desativarota()
+  public function desativarota($data)
   {
-    if ($_GET['id']){
-      $rota = (new NovaRota())->findById($_GET['id']);
+    if (!empty($data['id'])){
+      $rota = (new NovaRota())->findById($data['id']);
       $rota->status = "C";
       if ($rota->save()){
-        flash("success", "Rota desativada!");
-        $this->router->redirect('admin.rotasandamento');
+        flash("success", "Rota desativada com sucesso!");
+        echo $this->ajaxResponse("redirect", [
+          "url" => $this->router->route("admin.rotasandamento")
+        ]);
+        return;
       }
       echo $this->ajaxResponse("message",[
         "type" => "error",
@@ -464,7 +475,6 @@ class Admin extends Controller
       ]);
       return;
     }
-    $this->router->route('admin.rotasandamento');
   }
 
   public function todospagamentos()

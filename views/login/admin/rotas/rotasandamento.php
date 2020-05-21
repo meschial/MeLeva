@@ -32,8 +32,11 @@
                   <td>Un: <?= $rota->quantidade ?></td>
                   <td>R$:<?=number_format($rota->valor,2,",",".") ?></td>
                   <td>
-                    <a href="<?= $router->route('admin.detalherota', ['id'=>$rota->id]) ?>" class="btn btn-icon icon-left btn-info"><i class="fas fa-info-circle"></i>Ver Mais</a>
-                    <a href="<?= $router->route('admin.desativarota', ['id'=>$rota->id]) ?>" class="btn btn-icon icon-left btn-danger"><i class="fas fa-times"></i>Desativar</a>
+                      <form method="post" action="<?= $router->route('admin.desativarota') ?>" enctype="multipart/form-data">
+                          <a href="<?= $router->route('admin.detalherota', ['id'=>$rota->id]) ?>" class="btn btn-icon icon-left btn-info"><i class="fas fa-info-circle"></i>Ver Mais</a>
+                          <input type="hidden" name="id" value="<?= $rota->id ?>">
+                          <button type="submit" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Desativar</button>
+                      </form>
                   </td>
                 </tr>
                 <?php endforeach; endif;?>
@@ -46,3 +49,7 @@
     </div>
   </div>
 </section>
+
+<?php $v->start("scripts"); ?>
+<script src="<?= asset("/js/form.js"); ?>"></script>
+<?php $v->end(); ?>

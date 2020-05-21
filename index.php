@@ -39,17 +39,17 @@ $router->get("/detalhepagamento", "Admin:detalhepagamento", "admin.detalhepagame
 $router->get("/editarusuario", "Admin:editarUsuario", "admin.editarUsuario");
 $router->get("/detalherota", "Admin:detalherota", "admin.detalherota");
 //PASSANDO ID NA ROTA GET
-$router->get("/desativarmotorista", "admin:desativarmotorista", "admin.desativarmotorista");
 
+
+
+
+
+
+$router->post("/desativarota", "admin:desativarota", "admin.desativarota");
+$router->post("/ativarusuario", "admin:ativarusuario", "admin.ativarusuario");
+$router->post("/desativarmotorista", "admin:desativarmotorista", "admin.desativarmotorista");
+$router->post("/ativarmotorista", "admin:ativarmotorista", "admin.ativarmotorista");
 $router->post("/reativarmotorista", "admin:reativarmotorista", "admin.reativarmotorista");
-
-$router->get("/ativarmotorista", "admin:ativarmotorista", "admin.ativarmotorista");
-$router->get("/ativarusuario", "admin:ativarusuario", "admin.ativarusuario");
-$router->get("/desativarota", "admin:desativarota", "admin.desativarota");
-
-
-
-
 $router->post("/salvarMotorista", "Admin:salvarMotorista", "admin.salvarMotorista");
 $router->post("/salvarlogin", "admin:salvarlogin", "admin.salvarlogin");
 

@@ -32,8 +32,11 @@
                   <td><?= $motorista->cnh ?></td>
                   <td><div class="badge badge-success"><?= $motorista->mot_ativo ?></div></td>
                   <td>
-                    <a href="<?= $router->route('admin.editarUsuario', ['id'=>$motorista->login_id]) ?>" class="btn btn-icon icon-left btn-info"><i class="fas fa-info-circle"></i>Ver Mais</a>
-                    <a href="<?= $router->route('admin.desativarmotorista', ['id'=>$motorista->mot_id]) ?>" class="btn btn-icon icon-left btn-danger"><i class="fas fa-times"></i>Desativar</a>
+                      <form method="post" action="<?= $router->route('admin.desativarmotorista') ?>" enctype="multipart/form-data">
+                          <a href="<?= $router->route('admin.editarUsuario', ['id'=>$motorista->login_id]) ?>" class="btn btn-icon icon-left btn-info"><i class="fas fa-info-circle"></i>Ver Mais</a>
+                          <input type="hidden" name="id" value="<?= $motorista->mot_id ?>">
+                          <button type="submit" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Desativar</button>
+                      </form>
                   </td>
                 </tr>
                 <?php endforeach; endif;?>
@@ -46,3 +49,7 @@
     </div>
   </div>
 </section>
+
+<?php $v->start("scripts"); ?>
+    <script src="<?= asset("/js/form.js"); ?>"></script>
+<?php $v->end(); ?>

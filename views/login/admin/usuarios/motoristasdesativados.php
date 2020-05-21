@@ -37,7 +37,6 @@
                           <input type="hidden" name="id" value="<?= $motorista->mot_id ?>">
                         <button type="submit" class="btn btn-icon icon-left btn-success"><i class="fas fa-check"></i>Ativar</button>
                       </form>
-
                   </td>
                 </tr>
                 <?php endforeach; endif; ?>

@@ -34,8 +34,11 @@
                             <div class="badge badge-danger"><?= $usuario->ativo ?></div>
                         </td>
                   <td>
-                      <a href="<?= $router->route('admin.editarUsuario', ['id'=>$usuario->id]) ?>" class="btn btn-icon icon-left btn-info"><i class="fas fa-info-circle"></i>Ver Mais</a>
-                      <a href="<?= $router->route('admin.ativarusuario', ['id'=>$usuario->id]) ?>" class="btn btn-icon icon-left btn-success"><i class="fas fa-check"></i>Ativar</a>
+                      <form method="post" action="<?= $router->route('admin.ativarusuario') ?>" enctype="multipart/form-data">
+                          <a href="<?= $router->route('admin.editarUsuario', ['id'=>$usuario->id]) ?>" class="btn btn-icon icon-left btn-info"><i class="fas fa-info-circle"></i>Ver Mais</a>
+                          <input type="hidden" name="id" value="<?= $usuario->id ?>">
+                          <button type="submit" class="btn btn-icon icon-left btn-success"><i class="fas fa-check"></i>Ativar</button>
+                      </form>
                   </td>
                 </tr>
                 <?php endforeach; endif;?>
@@ -48,3 +51,7 @@
     </div>
   </div>
 </section>
+
+<?php $v->start("scripts"); ?>
+    <script src="<?= asset("/js/form.js"); ?>"></script>
+<?php $v->end(); ?>
