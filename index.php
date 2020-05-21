@@ -77,8 +77,10 @@ $router->get("/contratarrota", "App:contratarrota", "app.contratarrota");
 $router->get("/rotapagamento", "App:rotapagamento", "app.rotapagamento");
 $router->get("/pagamentotheme", "App:pagamentotheme", "app.pagamentotheme");
 $router->get("/listaderotas", "App:listaderotas", "app.listaderotas");
+$router->get("/pagamentoefetuado", "App:pagamentoefetuado", "app.pagamentoefetuado");
 $router->get("/cancelarrota", "App:cancelarrota", "app.cancelarrota");
 $router->get("/rotascanceladas", "App:rotascanceladas", "app.rotascanceladas");
+$router->get("/detalhepagamento", "App:detalhepagamento", "app.detalhepagamento");
 $router->get("/pagamentorotapagseguro", "App:pagamentorotapagseguro", "app.pagamentorotapagseguro");
 
 

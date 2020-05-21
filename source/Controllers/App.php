@@ -202,7 +202,7 @@ class App extends Controller
     ]);
   }
 
-  public function contrata($data):void
+  public function contrata($data): void
   {
     $data = filter_var_array($data, FILTER_SANITIZE_STRIPPED);
     if (in_array("", $data)) {
@@ -420,6 +420,48 @@ class App extends Controller
     ]);
   }
 
+  public function pagamentoefetuado()
+  {
+    $head = $this->seo->optimize(
+      "Bem vindo(a)",
+      site("desc"),
+      $this->router->route("app.pagamentoefetuado"),
+      routeImage("pagamentoefetuado")
+    )->render();
+
+    echo $this->view->render("theme/pagamentos/pagamentoefetuado",[
+      "head" => $head,
+      "user" => $this->user,
+      "rotas" => (new ContrataRota())
+        ->innerVenda("venda.login_id = :lo","lo={$_SESSION['user']}","*, venda.id as id_venda, venda.status as tipo, date_format(data_inicio, '%d/%m/%Y') data_inicio")
+        ->fetch(true)
+    ]);
+  }
+
+  public function detalhepagamento()
+  {
+    if (!empty($_GET['id'])){
+      $id = (new ContrataRota())->findById($_GET['id']);
+      if ($id->login_id <> $_SESSION['user']){
+        $this->router->redirect('site.home');
+      }
+    }
+    $head = $this->seo->optimize(
+      "Bem vindo(a)",
+      site("desc"),
+      $this->router->route("app.detalhepagamento"),
+      routeImage("detalhepagamento")
+    )->render();
+
+    echo $this->view->render("theme/pagamentos/detalhepagamento",[
+      "head" => $head,
+      "user" => $this->user,
+      "rotas" => (new ContrataRota())
+        ->innerVenda("venda.login_id = :lo and venda.id = :id","lo={$_SESSION['user']} & id={$id->id}","*, venda.id as id_venda, venda.status as tipo, date_format(data_inicio, '%d/%m/%Y') data_inicio")
+        ->fetch(true)
+    ]);
+  }
+
   public function rotascanceladas()
   {
     $head = $this->seo->optimize(
@@ -433,7 +475,7 @@ class App extends Controller
       "head" => $head,
       "user" => $this->user,
       "rotas" => (new ContrataRota())
-        ->innerVenda("venda.status = :s AND venda.login_id = :lo","s=C & lo={$_SESSION['user']}","*, venda.id as id_venda, date_format(data_inicio, '%d/%m/%Y') data_inicio")
+        ->innerVenda("venda.login_id = :lo","lo={$_SESSION['user']}","*, venda.id as id_venda, venda.status as tipo, date_format(data_inicio, '%d/%m/%Y') data_inicio")
         ->fetch(true)
     ]);
   }

@@ -53,16 +53,13 @@
           <div class="single-item mb-4">
             <h4 class="mb-4">Seus Pagamentos</h4>
             <a href="<?= $router->route("app.listaderotas"); ?>" class="sidebar-btn mb-3">
-              <strong>Pagamentos em Andamento</strong>
+              <strong>Aguardando Pagamento</strong>
             </a>
-            <a href="<?= $router->route("app.rotascanceladas"); ?>" class="sidebar-btn mb-3">
-              <strong>Pagamentos Cancelados</strong>
-            </a>
-            <a href="" class="sidebar-btn mb-3">
-              <strong>Pagamentos finalizados</strong>
-            </a>
-            <a href="" class="sidebar-btn mb-3">
-              <strong>Seus Saldos</strong>
+              <a href="<?= $router->route("app.rotascanceladas"); ?>" class="sidebar-btn mb-3">
+                  <strong>Pagamentos Cancelados</strong>
+              </a>
+            <a href="<?= $router->route("app.pagamentoefetuado"); ?>" class="sidebar-btn mb-3">
+                <strong>Pagamentos Efetuado</strong>
             </a>
           </div>
           <div class="single-item mb-4">

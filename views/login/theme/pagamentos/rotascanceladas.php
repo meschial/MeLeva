@@ -5,7 +5,7 @@
       <div class="single-content1">
         <div class="single-job mb-4 justify-content-between">
           <div class="job-text">
-            <h1 style="color: #6c757d; text-align: center">Rotas Aguardando pagamento</h1>
+            <h1 style="color: #6c757d; text-align: center">Pagamentos Cancelados</h1>
             <ul class="mt-4">
 
               <div class="login_form_callback">
@@ -15,6 +15,7 @@
               <?php
               if (!empty($rotas)):
                 foreach ($rotas as $rota):
+                  if ($rota->tipo == "6" || $rota->tipo == "7"):
                   ?>
 
                   <div class="mb-4">
@@ -26,13 +27,13 @@
                         <li><h5><i class="fa fa-clock-o"></i> Data do envio: <?= $rota->data_inicio; ?></h5></li>
                       </ul>
                       <div class="row">
-                        <a href="<?= $router->route('app.contratarrota') ?>" class="btn btn-primary btn-lg btn-teste active">Contratar</a>
-                        <a href="<?= $router->route('app.cancelarrota', ['id' => $rota->id_venda]) ?>" class="btn btn-danger btn-lg btn-teste active">Detalhes</a>
+                        <a href="<?= $router->route('app.detalhepagamento') ?>" class="btn btn-primary btn-lg btn-block active">Detalhes</a>
                       </div>
                     </div>
                   </div>
 
-                <?php
+              <?php
+                  endif;
                 endforeach;
               endif;
               ?>
