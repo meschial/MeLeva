@@ -219,7 +219,7 @@ abstract class DataLayer
      * @param bool $all
      * @return array|mixed|null
      */
-    public function fetch(bool $all = false)
+    public function fetch(bool $all = false): ?DataLayer
     {
         try {
             $stmt = Connect::getInstance()->prepare($this->statement . $this->group . $this->order . $this->limit . $this->offset);
