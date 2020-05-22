@@ -17,7 +17,7 @@ class User extends DataLayer
      */
     public function __construct()
     {
-        parent::__construct("login", ["nome", "sobrenome", "email", "senha"]);
+        parent::__construct("login", ["nome", "sobrenome", "email"]);
     }
 
     public function rota()

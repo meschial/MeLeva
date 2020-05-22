@@ -57,7 +57,7 @@
                         <?php } ?>
                       </td>
                     <td>
-                      <a href="<?= $router->route('admin.detalhepagamento', ['id'=>$venda->rota_id]) ?>" class="btn btn-icon icon-left btn-info"><i class="fas fa-info-circle"></i>Ver Mais</a>
+                      <a href="<?= $router->route('admin.pagamentosdetalhe', ['code'=>$venda->code]) ?>" class="btn btn-icon icon-left btn-info"><i class="fas fa-info-circle"></i>Ver Mais</a>
                     </td>
                   </tr>
                 <?php endforeach; endif;?>

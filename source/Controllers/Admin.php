@@ -570,4 +570,19 @@ class Admin extends Controller
     ]);
   }
 
+  public function pagamentosdetalhe()
+  {
+    $head = $this->seo->optimize(
+      "Todos os pagamentos finalizados da ". site("name"),
+      site("desc"),
+      $this->router->route("admin.pagamentosdetalhe"),
+      routeImage("pagamentosdetalhe")
+    )->render();
+
+    echo $this->view->render("admin/pagamentos/pagamentosdetalhe",[
+      "head" => $head,
+      "user" => $this->user
+    ]);
+  }
+
 }
