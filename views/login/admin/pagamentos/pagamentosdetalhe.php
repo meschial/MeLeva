@@ -169,9 +169,9 @@ foreach ($xml->shipping as $adress) {
                     data: {'id': id},
                     success: function(retorna){
                         console.log("Sucesso " + JSON.stringify(retorna));
-                        $('#swal-2').on("click", function()) {
-
-                        }
+                        $("#swal-2").click(function () {
+                            swal('Good Job', 'You clicked the button!', 'success');
+                        });
                     },
                     error: function(retorna){
                         console.log("Erro" + JSON.stringify(retorna));
