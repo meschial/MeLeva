@@ -159,7 +159,7 @@ foreach ($xml->shipping as $adress) {
                 $.ajax({
                     method: "POST",
                     url: "https://melevaprojeto.tk/admin/cancelarpagamento",
-                    data: id,
+                    data: {'id': id},
                     dataType: 'json',
                     success: function(retorna){
                         console.log("Sucesso " + JSON.stringify(retorna));
