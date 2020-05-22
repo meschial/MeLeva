@@ -4,7 +4,6 @@ $email = 'formatacaoumuarama@gmail.com';
 $token = '1045640749614566A06AA642AD42B89E';
 
 $Code = filter_input_array(INPUT_POST, FILTER_DEFAULT);
-var_dump($Code);exit();
   $Url="https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/cancels?email=".$email."&token=".$token."&transactionCode={$Code}";
 
   $Curl=curl_init($Url);
