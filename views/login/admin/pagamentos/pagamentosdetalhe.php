@@ -122,7 +122,7 @@ foreach ($xml->shipping as $adress) {
                                           <div class="badge badge-white"><?= $venda->status ?></div>
                                     <?php } elseif ($venda->status == "Em análise"){  ?>
                                           <div class="badge badge-warning"><?= $venda->status ?></div><br><br>
-                                         <input type="text" id="codee" name="codee" value="<?= $venda->code ?>">
+                                         <input type="hidden" id="codee" name="codee" value="<?= $venda->code ?>">
                                          <button name="cancelar" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Cancelar Pagamento</button>
                                     <?php } elseif ($venda->status == "Paga"){  ?>
                                           <div class="badge badge-secondary"><?= $venda->status ?></div>
@@ -150,6 +150,7 @@ foreach ($xml->shipping as $adress) {
     </div>
   </div>
 </section>
+
 <div class="col-12 col-sm-6 col-lg-3">
     <div class="card">
         <div class="card-body text-center">
@@ -158,6 +159,7 @@ foreach ($xml->shipping as $adress) {
         </div>
     </div>
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
         $(document).ready(function(){
@@ -169,9 +171,10 @@ foreach ($xml->shipping as $adress) {
                     data: {'id': id},
                     success: function(retorna){
                         console.log("Sucesso " + JSON.stringify(retorna));
-                        $("#swal-2").click(function () {
+                        $("#swal-2").append(function () {
                             swal('Good Job', 'You clicked the button!', 'success');
                         });
+
                     },
                     error: function(retorna){
                         console.log("Erro" + JSON.stringify(retorna));
