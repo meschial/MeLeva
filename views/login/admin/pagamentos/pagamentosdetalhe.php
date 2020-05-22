@@ -163,7 +163,6 @@ foreach ($xml->shipping as $adress) {
                     success: function(retorna){
                         console.log("Sucesso " + JSON.stringify(retorna));
                         swal('Atenção', 'Pagamento cancelado!', 'success');
-                        location.reload();
                     },
                     error: function(retorna){
                         console.log("Erro" + JSON.stringify(retorna));
