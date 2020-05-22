@@ -613,10 +613,9 @@ class Admin extends Controller
       curl_close($Curl);
 
       $Xml=simplexml_load_string($Retorno);
-      var_dump($Xml);
+
+      var_dump($Xml->result);
     }
-
-
 
     $head = $this->seo->optimize(
       "Todos os pagamentos finalizados da ". site("name"),
