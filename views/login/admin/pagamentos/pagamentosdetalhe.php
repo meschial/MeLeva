@@ -121,7 +121,8 @@ foreach ($xml->shipping as $adress) {
                                  <?php if ($venda->status == "Aguardando pagamento"){ ?>
                                           <div class="badge badge-white"><?= $venda->status ?></div>
                                     <?php } elseif ($venda->status == "Em análise"){  ?>
-                                          <div class="badge badge-warning"><?= $venda->status ?></div>
+                                          <div class="badge badge-warning"><?= $venda->status ?></div><br><br>
+                                     <a href="<?= $router->route('admin.cancelarpagamento', ['code' => $venda->code]) ?>" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Cancelar Pagamento</a>
                                     <?php } elseif ($venda->status == "Paga"){  ?>
                                           <div class="badge badge-secondary"><?= $venda->status ?></div>
                                     <?php } elseif ($venda->status == "Disponível"){  ?>
