@@ -572,6 +572,13 @@ class Admin extends Controller
 
   public function pagamentosdetalhe()
   {
+    if (!empty($_GET['code'])){
+      $venda = (new ContrataRota())->find("code = :c", "c={$_GET['code']}")->fetch(true);
+      foreach ($venda as $id){
+        $user = (new User())->findById($id->login_id);
+      }
+
+    }
     $head = $this->seo->optimize(
       "Todos os pagamentos finalizados da ". site("name"),
       site("desc"),
@@ -581,7 +588,10 @@ class Admin extends Controller
 
     echo $this->view->render("admin/pagamentos/pagamentosdetalhe",[
       "head" => $head,
-      "user" => $this->user
+      "user" => $this->user,
+      "login" => $user,
+      "vendas" => $venda,
+      "documentos" => (new DadosUser())->find("login_id = :l", "l={$id->login_id}", "*, date_format(date, '%d/%m/%Y') date")->fetch(true),
     ]);
   }
 

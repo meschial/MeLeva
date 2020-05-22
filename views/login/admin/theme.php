@@ -519,6 +519,8 @@
   <script src="<?= assetAdmin('assets/bundles/lightgallery/dist/js/lightgallery-all.js'); ?>"></script>
   <script src="<?= assetAdmin('assets/js/page/light-gallery.js'); ?>"></script>
   <script src="<?= assetAdmin('assets/js/page/index.js'); ?>"></script>
+  <script src="<?= assetAdmin('assets/bundles/jquery-steps/jquery.steps.min.js'); ?>"></script>
+  <script src="<?= assetAdmin('assets/js/page/form-wizard.js'); ?>"></script>
   <!-- Template JS File -->
   <script src="<?= assetAdmin('assets/js/scripts.js'); ?>"></script>
   <!-- Custom JS File -->
