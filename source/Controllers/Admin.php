@@ -615,6 +615,11 @@ class Admin extends Controller
       $Xml=simplexml_load_string($Retorno);
 
       var_dump($Xml->result);
+      if ($Xml->result == "OK"){
+        echo "deu certo";
+      }else{
+        echo "Não deu certo";
+      }
     }
 
     $head = $this->seo->optimize(
