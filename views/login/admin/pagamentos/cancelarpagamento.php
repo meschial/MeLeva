@@ -3,8 +3,7 @@
 $email = 'formatacaoumuarama@gmail.com';
 $token = '1045640749614566A06AA642AD42B89E';
 
-if ($_GET['code']){
-  $Code=$_GET['code'];
+$Code = filter_input_array(INPUT_POST, FILTER_DEFAULT);
   $Url="https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/cancels?email=".$email."&token=".$token."&transactionCode={$Code}";
 
   $Curl=curl_init($Url);
@@ -20,4 +19,3 @@ if ($_GET['code']){
   $retorna = ['erro' => true, 'dados' => $xml];
   header('Content-Type: application/json');
   echo json_encode($retorna);
-}
