@@ -157,8 +157,8 @@ foreach ($xml->shipping as $adress) {
             $("button[name='cancelar']").click(function(){
                 $.ajax({
                     method: "POST",
-                    url: "https://melevaprojeto.tk/admin/cancelarpagamento",
-                    data: {'id': id},
+                    url: "https://localhost/meleva/admin/cancelarpagamento",
+                    data: id,
                     dataType: 'json',
                     success: function(retorna){
                         console.log("Sucesso " + JSON.stringify(retorna));

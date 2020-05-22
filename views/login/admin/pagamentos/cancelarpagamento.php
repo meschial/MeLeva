@@ -3,9 +3,8 @@
 $email = 'formatacaoumuarama@gmail.com';
 $token = '1045640749614566A06AA642AD42B89E';
 
-$Code = json_decode($_POST['id'], true);
-var_dump($Code);exit;
-  $Url="https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/cancels?email=".$email."&token=".$token."&transactionCode={$Code}";
+ $code = $_POST;
+  $Url="https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/cancels?email=".$email."&token=".$token."&transactionCode={$code}";
 
   $Curl=curl_init($Url);
   curl_setopt($Curl,CURLOPT_HTTPHEADER,Array("Content-Type: application/x-www-form-urlencoded; charset=UTF-8"));
