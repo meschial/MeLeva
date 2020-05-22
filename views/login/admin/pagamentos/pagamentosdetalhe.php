@@ -122,7 +122,7 @@ foreach ($xml->shipping as $adress) {
                                           <div class="badge badge-white"><?= $venda->status ?></div>
                                     <?php } elseif ($venda->status == "Em análise"){  ?>
                                           <div class="badge badge-warning"><?= $venda->status ?></div><br><br>
-                                         <input type="text" name="codee" value="<?= $venda->code ?>">
+                                         <input type="text" id="codee" name="codee" value="<?= $venda->code ?>">
                                          <button name="cancelar" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Cancelar Pagamento</button>
                                     <?php } elseif ($venda->status == "Paga"){  ?>
                                           <div class="badge badge-secondary"><?= $venda->status ?></div>
@@ -153,9 +153,8 @@ foreach ($xml->shipping as $adress) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
         $(document).ready(function(){
+            var id = $("#codee").val();
             $("button[name='cancelar']").click(function(){
-                var id = $("#codee").val();
-
                 $.ajax({
                     method: "POST",
                     url: "https://melevaprojeto.tk/admin/cancelarpagamento",
@@ -170,7 +169,7 @@ foreach ($xml->shipping as $adress) {
                         $("#msg").html('<p style="color: #FF0000">Erro ao realizar a transação</p>')
                     }
                 });
-
             });
         });
+
 </script>
