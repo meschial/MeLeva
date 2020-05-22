@@ -518,10 +518,14 @@
   <script src="<?= assetAdmin('assets/js/page/datatables.js'); ?>"></script>
   <script src="<?= assetAdmin('assets/bundles/lightgallery/dist/js/lightgallery-all.js'); ?>"></script>
   <script src="<?= assetAdmin('assets/js/page/light-gallery.js'); ?>"></script>
+  <script src="<?= assetAdmin('assets/bundles/sweetalert/sweetalert.min.js'); ?>"></script>
+  <script src="<?= assetAdmin('assets/js/page/sweetalert.js'); ?>"></script>
   <script src="<?= assetAdmin('assets/js/page/index.js'); ?>"></script>
   <script src="<?= assetAdmin('assets/bundles/jquery-steps/jquery.steps.min.js'); ?>"></script>
   <script src="<?= assetAdmin('assets/js/page/form-wizard.js'); ?>"></script>
   <!-- Template JS File -->
+  <!-- Page Specific JS File -->
+
   <script src="<?= assetAdmin('assets/js/scripts.js'); ?>"></script>
   <!-- Custom JS File -->
   <script src="<?= assetAdmin('assets/js/custom.js'); ?>"></script>

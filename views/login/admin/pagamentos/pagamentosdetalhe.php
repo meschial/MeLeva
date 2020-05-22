@@ -150,6 +150,14 @@ foreach ($xml->shipping as $adress) {
     </div>
   </div>
 </section>
+<div class="col-12 col-sm-6 col-lg-3">
+    <div class="card">
+        <div class="card-body text-center">
+            <div class="mb-2">Success Message</div>
+            <button class="btn btn-primary" id="swal-2">Launch</button>
+        </div>
+    </div>
+</div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
         $(document).ready(function(){
@@ -161,7 +169,9 @@ foreach ($xml->shipping as $adress) {
                     data: {'id': id},
                     success: function(retorna){
                         console.log("Sucesso " + JSON.stringify(retorna));
-                        $("#msg").html('<p style="color: green">Transação realizada com sucesso</p>');
+                        $('#swal-2').on("click", function()) {
+
+                        }
                     },
                     error: function(retorna){
                         console.log("Erro" + JSON.stringify(retorna));
