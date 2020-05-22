@@ -5,7 +5,7 @@ $token = '1045640749614566A06AA642AD42B89E';
 
 $code = $_POST['id'];
 var_dump($code);
-  $Url="https://ws.sandbox.pagseguro.uol.com.br/v3/transactions/cancels?email=".$email."&token=".$token."&transactionCode={$code}";
+  $Url="https://ws.sandbox.pagseguro.uol.com.br/v2/transactions/cancels?email=".$email."&token=".$token."&transactionCode={$code}";
 
   $Curl=curl_init($Url);
   curl_setopt($Curl,CURLOPT_HTTPHEADER,Array("Content-Type: application/x-www-form-urlencoded; charset=UTF-8"));
