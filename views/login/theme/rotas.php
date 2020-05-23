@@ -7,10 +7,10 @@
             <div class="col-lg-12">
                 <div class="jobs-tab tab-item">
                     <ul>
-                        <li class="active">recent</li>
-                        <li>full time</li>
-                        <li>part time</li>
-                        <li>intern</li>
+                        <li class="active">Principais</li>
+                        <li>Rotas de Hoje</li>
+                        <li>Rotas da Semana</li>
+                        <li>Mais Recentes</li>
                     </ul>
                 </div>
             </div>
@@ -19,7 +19,8 @@
             <div class="col-lg-8">
                 <div class="main-content">
                     <div class="single-content1">
-                      <?php foreach ($rotas as $rota): ?>
+                      <?php foreach ($rotas as $rota):
+                        ?>
                         <div class="single-job mb-4 d-lg-flex justify-content-between">
                             <div class="job-text">
                                 <h4><b>CEP ORIGEM: <?= $rota->cep_inicio." <strong> / CEP DESTINO: </strong> ".$rota->cep_fim?></b></h4>
@@ -40,24 +41,25 @@
                     </div>
                 </div>
                 <div class="more-job-btn mt-5 text-center">
-                    <a href="#" class="template-btn">more job post</a>
+                    <?= $paginator; ?>
+                    <a href="#" class="template-btn">Mostar Mais</a>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="sidebar mt-5 mt-lg-0">
                     <div class="single-item mb-4">
-                        <h4 class="mb-4">jobs type</h4>
+                        <h4 class="mb-4">Teste</h4>
                         <a href="#" class="sidebar-btn d-flex justify-content-between mb-3">
-                            <span>Full Time</span>
-                            <span class="text-right">25 job</span>
+                            <span>Teste</span>
+                            <span class="text-right">Teste</span>
                         </a>
                         <a href="#" class="sidebar-btn d-flex justify-content-between mb-3">
-                            <span>Part Time</span>
-                            <span class="text-right">25 job</span>
+                            <span>Teste</span>
+                            <span class="text-right">Teste</span>
                         </a>
                         <a href="#" class="sidebar-btn d-flex justify-content-between">
-                            <span>Internship</span>
-                            <span class="text-right">25 job</span>
+                            <span>Teste</span>
+                            <span class="text-right">Teste</span>
                         </a>
                     </div>
                 </div>

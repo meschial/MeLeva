@@ -4,6 +4,7 @@
 namespace Source\Controllers;
 
 
+use CoffeeCode\Paginator\Paginator;
 use Source\Core\Controller;
 use Source\Models\Comentario;
 use Source\Models\Faq\Cliente;
@@ -77,7 +78,7 @@ class Site extends Controller
     /**
      *
      */
-    public function rotas(): void
+    public function rotas(?array $data): void
     {
         $head = $this->seo->optimize(
             "Bem vindo(a)",
@@ -93,12 +94,16 @@ class Site extends Controller
         //    var_dump($user->rota());
       // }
 
+      $pager = new Paginator($this->router->route("/rotas/"));
+      $pager->pager(100, 10, ($data['page'] ?? 1));
+
         echo $this->view->render("theme/rotas",[
             "head" => $head,
             "user" => $this->user,
             "rotas" => (new NovaRota())
             ->find("","", "* ,date_format(data_inicio, '%d/%m/%Y') data_inicio")
-            ->fetch(true)
+            ->fetch(true),
+          "paginator" => $pager->render()
         ]);
 
     }

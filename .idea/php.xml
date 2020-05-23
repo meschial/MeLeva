@@ -25,8 +25,10 @@
       <path value="$PROJECT_DIR$/vendor/coffeecode/optimizer" />
       <path value="$PROJECT_DIR$/vendor/coffeecode/datalayer" />
       <path value="$PROJECT_DIR$/vendor/coffeecode/cropper" />
+      <path value="$PROJECT_DIR$/vendor/coffeecode/paginator" />
     </include_path>
   </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7" />
   <component name="PhpUnit">
     <phpunit_settings>
       <PhpUnitSettings custom_loader_path="$PROJECT_DIR$/vendor/autoload.php" />

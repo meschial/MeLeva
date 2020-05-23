@@ -14,7 +14,7 @@ $router->namespace("Source\Controllers");
  */
 $router->group(null);
 $router->get("/", "Site:inicio", "site.inicio");
-$router->get("/rotas", "Site:rotas", "site.rotas");
+$router->get("/rotas/{page}", "Site:rotas", "site.rotas");
 $router->get("/politica", "Site:politica", "site.politica");
 $router->get("/termos", "Site:termos", "site.termos");
 
