@@ -99,7 +99,7 @@ define("FACEBOOK_LOGIN",[
  * GOOGLE LOGIN
  */
 define("GOOGLE_LOGIN",[
-  "clientId"          => "19312449110-14s76g2qdregpckjgi7rg9dtrvcr1ak0.apps.googleusercontent.com",
-  "clientSecret"      => "zttDV3C_PEHORWdR3Ogee0JY",
+  "clientId"          => "19312449110-2dmi5b49u812u7lcde9qt65ub0sqqmle.apps.googleusercontent.com",
+  "clientSecret"      => "9VoxKnTR99LM9nDDq03GXPI6",
   "redirectUri"       => SITE["root"]."/google",
 ]);

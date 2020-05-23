@@ -46,8 +46,8 @@
                             <ul class="sub-menu">
                                 <li><a href="job-search.html">Job Search</a></li>
                                 <li><a href="job-single.html">Job Single</a></li>
-                                <li><a href="pricing-plan.html">Pricing Plan</a></li>
-                                <li><a href="elements.html">Elements</a></li>
+                                <li><a href="<?= $router->route('site.termos') ?>">Termos de Serviço</a></li>
+                                <li><a href="<?= $router->route('site.politica') ?>">Política de Privacidade</a></li>
                             </ul>
                         </li>
                         <li class="menu-btn">

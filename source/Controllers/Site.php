@@ -44,6 +44,36 @@ class Site extends Controller
         ]);
     }
 
+  public function politica()
+  {
+    $head = $this->seo->optimize(
+      "Bem vindo a Politica do".site("name"),
+      site("desc"),
+      $this->router->route("site.politica"),
+      routeImage("Politica")
+    )->render();
+
+    echo $this->view->render("theme/usuario/politica",[
+      "head" => $head,
+      "user" =>$this->user
+    ]);
+  }
+  public function termos()
+  {
+    $head = $this->seo->optimize(
+      "Bem vindo a Termos do".site("name"),
+      site("desc"),
+      $this->router->route("site.termos"),
+      routeImage("Termos")
+    )->render();
+
+    echo $this->view->render("theme/usuario/termos",[
+      "head" => $head,
+      "user" =>$this->user
+    ]);
+  }
+
+
     /**
      *
      */
