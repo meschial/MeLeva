@@ -125,13 +125,13 @@ foreach ($xml->shipping as $adress) {
                                           <div class="badge badge-warning"><?= $venda->status ?></div><br><br>
                                          <button name="cancelar" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Cancelar Pagamento</button>
                                     <?php } elseif ($venda->status == "Paga"){  ?>
-                                          <div class="badge badge-secondary"><?= $venda->status ?></div>
+                                          <div class="badge badge-secondary"><?= $venda->status ?></div><br><br>
                                           <button name="devolver" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Devolver Pagamento</button>
                                     <?php } elseif ($venda->status == "Disponível"){  ?>
-                                          <div class="badge badge-success"><?= $venda->status ?></div>
+                                          <div class="badge badge-success"><?= $venda->status ?></div><br><br>
                                           <button name="devolver" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Devolver Pagamento</button>
                                     <?php } elseif ($venda->status == "Em disputa"){  ?>
-                                          <div class="badge badge-info"><?= $venda->status ?></div>
+                                          <div class="badge badge-info"><?= $venda->status ?></div><br><br>
                                           <button name="devolver" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Devolver Pagamento</button>
                                     <?php } elseif ($venda->status == "Devolvida"){  ?>
                                           <div class="badge badge-dark"><?= $venda->status ?></div>
@@ -140,7 +140,7 @@ foreach ($xml->shipping as $adress) {
                                     <?php } elseif ($venda->status == "Debitado"){  ?>
                                           <div class="badge badge-primary"><?= $venda->status ?></div>
                                     <?php } elseif ($venda->status == "Retenção temporária"){  ?>
-                                          <div class="badge badge-transparent"><?= $venda->status ?></div>
+                                          <div class="badge badge-transparent"><?= $venda->status ?></div><br><br>
                                           <button name="devolver" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Devolver Pagamento</button>
                                     <?php } ?> <?php endforeach; endif;?> </h6>
 
