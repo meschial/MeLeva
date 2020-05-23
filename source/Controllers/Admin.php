@@ -493,7 +493,7 @@ class Admin extends Controller
     echo $this->view->render("admin/pagamentos/todospagamentos",[
       "head" => $head,
       "user" => $this->user,
-      "vendas" => (new ContrataRota())->find("","","*, date_format(date, '%d/%m/%Y') date")->order("id ASC")->fetch(true)
+      "vendas" => (new ContrataRota())->find("","","*, date_format(date, '%d/%m/%Y') date")->order("venda.id DESC")->fetch(true)
     ]);
   }
 
