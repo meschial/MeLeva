@@ -53,11 +53,12 @@ class Web extends Controller
      */
     public function cadastrar(): void
     {
+      date_default_timezone_set('America/Sao_Paulo');
         $head = $this->seo->optimize(
             "Crie sua conta no". site("name"),
             site("desc"),
             $this->router->route("web.cadastrar"),
-            routeImage("Register"),
+            routeImage("Register")
             )->render();
 
         $form_user = new \stdClass();
