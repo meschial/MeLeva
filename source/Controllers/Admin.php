@@ -61,7 +61,11 @@ class Admin extends Controller
 
     echo $this->view->render("admin/home",[
       "head" => $head,
-      "user" => $this->user
+      "user" => $this->user,
+      "usuarios" => (new User())->find()->count(),
+      "vendas" => (new ContrataRota())->find()->count(),
+      "rotas" => (new NovaRota())->find()->count(),
+      "ganhos" => (new ContrataRota())->find("","", "SUM(valor) as valores")->fetch(true)
     ]);
   }
 
