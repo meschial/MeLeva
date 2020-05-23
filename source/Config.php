@@ -79,9 +79,9 @@ define("SOCIAL", [
  */
 define("MAIL",[
   "host" => "smtp.sendgrid.net",
-  "port" => "465",
-  "user" => "apikey",
-  "passwd" => "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",
+  "port" => "587",
+  "user" => "API Chave",
+  "passwd" => "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",
   "from_name" => "Marcos",
   "from_email" => "marcosmurilo2012@hotmail.com"
 ]);
