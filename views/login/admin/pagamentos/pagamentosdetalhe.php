@@ -142,7 +142,6 @@ foreach ($xml->shipping as $adress) {
 
                         </section>
                     </div>
-
             </div>
           </div>
         </div>
@@ -151,7 +150,50 @@ foreach ($xml->shipping as $adress) {
   </div>
 </section>
 
+
+<!-- Button trigger modal -->
+<button type="button" name="modal" class="btn btn-primary">
+    Launch static backdrop modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="swal-icon swal-icon--success">
+                    <span class="swal-icon--success__line swal-icon--success__line--long"></span>
+                    <span class="swal-icon--success__line swal-icon--success__line--tip"></span>
+
+                    <div class="swal-icon--success__ring"></div>
+                    <div class="swal-icon--success__hide-corners"></div>
+                </div>
+            </div>
+            <div class="swal-title" >Atenção!!!</div>
+            <div class="swal-text">Pagamento Cancelado</div>
+            <div class="swal-footer">
+                <div class="swal-button-container">
+                    <button class="swal-button swal-button--confirm" name="ok">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("button[name='modal']").click(function(){
+            $('#staticBackdrop').modal()
+        });
+        $("button[name='ok']").click(function(){
+            $('#staticBackdrop').modal('hide')
+        });
+    });
+
+</script>
+
 <script>
         $(document).ready(function(){
             var id = $("#codee").val();
@@ -162,7 +204,10 @@ foreach ($xml->shipping as $adress) {
                     data: {'id': id},
                     success: function(retorna){
                         console.log("Sucesso " + JSON.stringify(retorna));
-                        swal('Atenção', 'Pagamento cancelado!', 'success');
+                        $('#staticBackdrop').modal();
+                        $("button[name='ok']").click(function(){
+                            location.reload();
+                        });
                     },
                     error: function(retorna){
                         console.log("Erro" + JSON.stringify(retorna));
