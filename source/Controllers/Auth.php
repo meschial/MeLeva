@@ -59,7 +59,7 @@ class Auth extends Controller
 
 
         $_SESSION["user"] = $user->id;
-        $this->ajaxResponse("redirect", ["url" => $this->router->route("site.inicio")]);
+        echo $this->ajaxResponse("redirect", ["url" => $this->router->route("site.inicio")]);
     }
 
     /**
@@ -96,7 +96,7 @@ class Auth extends Controller
         }
 
         $_SESSION["user"] = $user->id;
-      $this->ajaxResponse("redirect", ["url" => $this->router->route("site.inicio")]);
+        echo $this->ajaxResponse("redirect", ["url" => $this->router->route("site.inicio")]);
 
 
     }
