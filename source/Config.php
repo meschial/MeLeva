@@ -1,6 +1,6 @@
 <?php
 
-$teste = true;
+$teste = false;
 
 if ($teste){
   define("SITE", [
