@@ -1,5 +1,4 @@
 <?php $v->layout("theme/theme");
-date_default_timezone_set('America/Sao_Paulo');
 ?>
 
 <style>

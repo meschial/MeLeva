@@ -19,7 +19,6 @@ class Web extends Controller
      */
     public function __construct($router)
     {
-        date_default_timezone_set('America/Sao_Paulo');
         parent::__construct($router);
 
         if (!empty($_SESSION["user"])){
@@ -54,7 +53,7 @@ class Web extends Controller
      */
     public function cadastrar(): void
     {
-      date_default_timezone_set('America/Sao_Paulo');
+
         $head = $this->seo->optimize(
             "Crie sua conta no". site("name"),
             site("desc"),
