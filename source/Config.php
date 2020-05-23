@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('America/Sao_Paulo');
-$teste = false;
+$teste = true;
 
 if ($teste){
   define("SITE", [

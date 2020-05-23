@@ -110,13 +110,26 @@
                                                     <label>ID</label>
                                                     <input type="text" name="id" class="form-control" value="<?= $login->id ?>">
                                                 </div>
-                                                <div class="form-group col-md-5 col-12">
+                                                <div class="form-group col-md-4 col-12">
                                                     <label>Primeiro Nome</label>
                                                     <input type="text" name="nome" class="form-control" value="<?= $login->nome ?>">
                                                 </div>
-                                                <div class="form-group col-md-6 col-12">
+                                                <div class="form-group col-md-4 col-12">
                                                     <label>Sobrenome</label>
                                                     <input type="text" name="sobrenome" class="form-control" value="<?= $login->sobrenome ?>">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="form-label">Admin</label>
+                                                    <div class="selectgroup w-100">
+                                                        <label class="selectgroup-item">
+                                                            <input type="radio" name="admin" value="S" class="selectgroup-input-radio" <?php if ($login->admin == "S"){ ?> checked="" <?php } ?>>
+                                                            <span class="selectgroup-button">Admin</span>
+                                                        </label>
+                                                        <label class="selectgroup-item">
+                                                            <input type="radio" name="admin" value="N" class="selectgroup-input-radio" <?php if ($login->admin == "N"){ ?> checked="" <?php } ?>>
+                                                            <span class="selectgroup-button">Não é admin</span>
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -138,7 +151,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                         <div class="card-footer text-right">
                                             <button type="submit" class="btn btn-primary" >Atualizar Dados</button>

@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="<?= assetAdmin('assets/css/load.css'); ?>">
   <link rel="stylesheet" href="<?= assetAdmin('assets/css/message.css'); ?>">
   <link rel="stylesheet" href="<?= assetAdmin('assets/bundles/lightgallery/dist/css/lightgallery.css'); ?>">
+  <link rel="stylesheet" href="<?= assetAdmin('assets/bundles/pretty-checkbox/pretty-checkbox.min.css'); ?>">
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="<?= assetAdmin('assets/css/custom.css'); ?>">
   <link rel='shortcut icon' type='image/x-icon' href='<?= assetAdmin('assets/img/meleva.png'); ?>' />
@@ -59,7 +60,7 @@
               </a>
           </div>
           <ul class="sidebar-menu">
-            <li class="menu-header">Main</li>
+            <li class="menu-header">Menu</li>
             <li class="dropdown active">
               <a href="<?= $router->route("admin.home");?>" class="nav-link"><i data-feather="home"></i><span>home</span></a>
             </li>
@@ -71,8 +72,8 @@
                 <li><a class="nav-link" href="<?= $router->route('admin.motoristasnaoativos') ?>">Motoristas não Ativos</a></li>
                 <li><a class="nav-link" href="<?= $router->route('admin.motoristasdesativados') ?>">Motoristas Desativados</a></li>
                 <li><a class="nav-link" href="<?= $router->route('admin.todosmotoristas') ?>">Todos Motoristas</a></li>
-                <li><a class="nav-link" href="<?= $router->route('admin.todosusuarios') ?>">Todos Usuários</a></li>
                 <li><a class="nav-link" href="<?= $router->route('admin.usuariosdesativados') ?>">Usuários Desativados</a></li>
+                <li><a class="nav-link" href="<?= $router->route('admin.todosusuarios') ?>">Todos Usuários</a></li>
               </ul>
             </li>
             <li class="dropdown">
@@ -118,10 +119,11 @@
           </a>
           <div class="settingSidebar-body ps-container ps-theme-default">
             <div class=" fade show active">
-              <div class="setting-panel-header">Setting Panel
+              <div class="setting-panel-header">
+                Painel de configuração
               </div>
               <div class="p-15 border-bottom">
-                <h6 class="font-medium m-b-10">Select Layout</h6>
+                <h6 class="font-medium m-b-10">Selecionar Layout</h6>
                 <div class="selectgroup layout-color w-50">
                   <label class="selectgroup-item">
                     <input type="radio" name="value" value="1" class="selectgroup-input-radio select-layout" checked>
@@ -134,7 +136,7 @@
                 </div>
               </div>
               <div class="p-15 border-bottom">
-                <h6 class="font-medium m-b-10">Sidebar Color</h6>
+                <h6 class="font-medium m-b-10">Cor do sidebar</h6>
                 <div class="selectgroup selectgroup-pills sidebar-color">
                   <label class="selectgroup-item">
                     <input type="radio" name="icon-input" value="1" class="selectgroup-input select-sidebar">
@@ -149,7 +151,7 @@
                 </div>
               </div>
               <div class="p-15 border-bottom">
-                <h6 class="font-medium m-b-10">Color Theme</h6>
+                <h6 class="font-medium m-b-10">Cor do tema</h6>
                 <div class="theme-setting-options">
                   <ul class="choose-theme list-unstyled mb-0">
                     <li title="white" class="active">
@@ -198,7 +200,7 @@
               </div>
               <div class="mt-4 mb-4 p-3 align-center rt-sidebar-last-ele">
                 <a href="#" class="btn btn-icon icon-left btn-primary btn-restore-theme">
-                  <i class="fas fa-undo"></i> Restore Default
+                  <i class="fas fa-undo"></i> Restaurar padrão
                 </a>
               </div>
             </div>
@@ -206,9 +208,7 @@
         </div>
       </div>
       <footer class="main-footer">
-        <div class="footer-left">
-          <a href="templateshub.net">Templateshub</a></a>
-        </div>
+
         <div class="footer-right">
         </div>
       </footer>

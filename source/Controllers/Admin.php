@@ -322,6 +322,7 @@ class Admin extends Controller
     $user->sobrenome = $data['sobrenome'];
     $user->email = $data['email'];
     $user->ativo = $data['ativo'];
+    $user->admin = $data['admin'];
     if ($user->save()){
       flash("success", "Dados atualizados com sucesso!");
       echo $this->ajaxResponse("redirect", [

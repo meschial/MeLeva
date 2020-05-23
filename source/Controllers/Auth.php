@@ -80,6 +80,8 @@ class Auth extends Controller
         $user->nome = $data["first_name"];
         $user->sobrenome = $data["last_name"];
         $user->email = $data["email"];
+        $user->ativo = "S";
+        $user->admin = "N";
         $user->senha = password_hash($data["passwd"], PASSWORD_DEFAULT);
 
         /*
