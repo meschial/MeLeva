@@ -160,7 +160,7 @@ foreach ($xml->shipping as $adress) {
     Launch static backdrop modal
 </button>
 
-<!-- Modal -->
+<!-- Modal success-->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -184,15 +184,36 @@ foreach ($xml->shipping as $adress) {
     </div>
 </div>
 
+<!-- Modal error-->
+<div class="modal fade" id="error" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="swal-icon swal-icon--error">
+                <div class="swal-icon--error__x-mark">
+                    <span class="swal-icon--error__line swal-icon--error__line--left"></span>
+                    <span class="swal-icon--error__line swal-icon--error__line--right"></span>
+                </div>
+            </div>
+            <div class="swal-title" >Atenção!!!</div>
+            <div class="swal-text">Erro na tranzação</div>
+            <div class="swal-footer">
+                <div class="swal-button-container">
+                    <button class="swal-button swal-button--confirm" name="ok">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
         $("button[name='modal']").click(function(){
-            $('#staticBackdrop').modal()
+            $('#error').modal()
         });
         $("button[name='ok']").click(function(){
-            $('#staticBackdrop').modal('hide')
+            $('#error').modal('hide')
         });
     });
 
@@ -214,8 +235,10 @@ foreach ($xml->shipping as $adress) {
                         });
                     },
                     error: function(retorna){
-                        console.log("Erro" + JSON.stringify(retorna));
-                        $("#msg").html('<p style="color: #FF0000">Erro ao realizar a transação</p>')
+                        $('#error').modal()
+                        $("button[name='ok']").click(function(){
+                            $('#error').modal('hide')
+                        });
                     }
                 });
             });
@@ -232,8 +255,10 @@ foreach ($xml->shipping as $adress) {
                         });
                     },
                     error: function(retorna){
-                        console.log("Erro" + JSON.stringify(retorna));
-                        $("#msg").html('<p style="color: #FF0000">Erro ao realizar a transação</p>')
+                        $('#error').modal()
+                        $("button[name='ok']").click(function(){
+                            $('#error').modal('hide')
+                        });
                     }
                 });
             });
