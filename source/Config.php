@@ -79,11 +79,11 @@ define("SOCIAL", [
  */
 define("MAIL",[
   "host" => "smtp.sendgrid.net",
-  "port" => "587",
+  "port" => "465",
   "user" => "apikey",
-  "passwd" => "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",
-  "from_name" => "Marcos Murilo",
-  "from_email" => "marcosmeschial@gmail.com"
+  "passwd" => "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",
+  "from_name" => "Marcos",
+  "from_email" => "marcosmurilo2012@hotmail.com"
 ]);
 
 /*
