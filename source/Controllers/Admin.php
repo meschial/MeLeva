@@ -611,4 +611,10 @@ class Admin extends Controller
     ]);
   }
 
+  public function devolverpagamento()
+  {
+    echo $this->view->render("admin/pagamentos/devolverpagamento",[
+    ]);
+  }
+
 }

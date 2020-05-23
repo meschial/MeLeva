@@ -117,19 +117,22 @@ foreach ($xml->shipping as $adress) {
                             elseif ($venda->status == "7"){$venda->status = "Cancelada";}
                             elseif ($venda->status == "8"){$venda->status = "Debitado";}
                             elseif ($venda->status == "9"){$venda->status = "Retenção temporária";}?>
+                            <input type="hidden" id="codee" name="codee" value="<?= $venda->code ?>">
                             <h6>Status:
                                  <?php if ($venda->status == "Aguardando pagamento"){ ?>
                                           <div class="badge badge-white"><?= $venda->status ?></div>
                                     <?php } elseif ($venda->status == "Em análise"){  ?>
                                           <div class="badge badge-warning"><?= $venda->status ?></div><br><br>
-                                         <input type="hidden" id="codee" name="codee" value="<?= $venda->code ?>">
                                          <button name="cancelar" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Cancelar Pagamento</button>
                                     <?php } elseif ($venda->status == "Paga"){  ?>
                                           <div class="badge badge-secondary"><?= $venda->status ?></div>
+                                          <button name="devolver" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Devolver Pagamento</button>
                                     <?php } elseif ($venda->status == "Disponível"){  ?>
                                           <div class="badge badge-success"><?= $venda->status ?></div>
+                                          <button name="devolver" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Devolver Pagamento</button>
                                     <?php } elseif ($venda->status == "Em disputa"){  ?>
                                           <div class="badge badge-info"><?= $venda->status ?></div>
+                                          <button name="devolver" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Devolver Pagamento</button>
                                     <?php } elseif ($venda->status == "Devolvida"){  ?>
                                           <div class="badge badge-dark"><?= $venda->status ?></div>
                                     <?php } elseif ($venda->status == "Cancelada"){  ?>
@@ -138,6 +141,7 @@ foreach ($xml->shipping as $adress) {
                                           <div class="badge badge-primary"><?= $venda->status ?></div>
                                     <?php } elseif ($venda->status == "Retenção temporária"){  ?>
                                           <div class="badge badge-transparent"><?= $venda->status ?></div>
+                                          <button name="devolver" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Devolver Pagamento</button>
                                     <?php } ?> <?php endforeach; endif;?> </h6>
 
                         </section>
@@ -201,6 +205,24 @@ foreach ($xml->shipping as $adress) {
                 $.ajax({
                     method: "POST",
                     url: "https://melevaprojeto.tk/admin/cancelarpagamento",
+                    data: {'id': id},
+                    success: function(retorna){
+                        console.log("Sucesso " + JSON.stringify(retorna));
+                        $('#staticBackdrop').modal();
+                        $("button[name='ok']").click(function(){
+                            location.reload();
+                        });
+                    },
+                    error: function(retorna){
+                        console.log("Erro" + JSON.stringify(retorna));
+                        $("#msg").html('<p style="color: #FF0000">Erro ao realizar a transação</p>')
+                    }
+                });
+            });
+            $("button[name='devolver']").click(function(){
+                $.ajax({
+                    method: "POST",
+                    url: "https://melevaprojeto.tk/admin/devolverpagamento",
                     data: {'id': id},
                     success: function(retorna){
                         console.log("Sucesso " + JSON.stringify(retorna));

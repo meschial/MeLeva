@@ -35,6 +35,7 @@ $router->get("/todospagamentos", "Admin:todospagamentos", "admin.todospagamentos
 $router->get("/detalhepagamento", "Admin:detalhepagamento", "admin.detalhepagamento");
 $router->get("/pagamentosdetalhe", "Admin:pagamentosdetalhe", "admin.pagamentosdetalhe");
 $router->post("/cancelarpagamento", "Admin:cancelarpagamento", "admin.cancelarpagamento");
+$router->post("/devolverpagamento", "Admin:devolverpagamento", "admin.devolverpagamento");
 
 //ROTAS GET COM ID
 $router->get("/editarusuario", "Admin:editarUsuario", "admin.editarUsuario");
