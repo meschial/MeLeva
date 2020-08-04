@@ -40,10 +40,7 @@
 
                     </div>
                 </div>
-                <div class="more-job-btn mt-5 text-center">
-                    <?= $paginator; ?>
-                    <a href="#" class="template-btn">Mostar Mais</a>
-                </div>
+
             </div>
             <div class="col-lg-4">
                 <div class="sidebar mt-5 mt-lg-0">

@@ -15,11 +15,14 @@
                         <a href="<?= $router->route("app.novarota"); ?>" class="sidebar-btn mb-3">
                             <strong>Nova Rota</strong>
                         </a>
-                        <a href="<?= $router->route("app.suasrotas"); ?>" class="sidebar-btn mb-3">
+                        <a href="<?= $router->route("app.rotaandamento"); ?>" class="sidebar-btn mb-3">
                             <strong>Rotas em Andamento</strong>
                         </a>
-                        <a href="" class="sidebar-btn mb-3">
+                        <a href="<?= $router->route("app.rotafinalizada"); ?>" class="sidebar-btn mb-3">
                             <strong>Rotas Finalizadas</strong>
+                        </a>
+                        <a href="<?= $router->route("app.rotacontratada"); ?>" class="sidebar-btn mb-3">
+                            <strong>Rotas Contratadas</strong>
                         </a>
                         <a href="" class="sidebar-btn mb-3">
                             <strong>Seus Saldos</strong>

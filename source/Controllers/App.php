@@ -181,6 +181,8 @@ class App extends Controller
 
     }
 
+
+
   public function contratarrota():void
   {
     if ($_GET['id']){
@@ -213,6 +215,10 @@ class App extends Controller
       return;
     }// id	valor	date	nome	descricao	status	rota_id	login_id
     if ($data['id_rota']){
+        $id_mot = (new Motorista())->find("login_id = :l", "l={$data['id_mot']}")->fetch(true);
+        foreach ($id_mot as $moto){
+            $motorista = $moto->id;
+        }
       date_default_timezone_set('America/Sao_Paulo');
       $id = $data['id_rota'];
       $rota = (new NovaRota())->findById($id);
@@ -223,7 +229,7 @@ class App extends Controller
       $venda->descricao = $data['descricao'];
       $venda->status = '1';
       $venda->rota_id = $data['id_rota'];
-      $venda->mot_id = $data['id_mot'];
+      $venda->mot_id = $motorista;
       $venda->login_id = $_SESSION['user'];
       if (!empty($venda->save())){
         $dados['venda'] = $venda;
@@ -257,6 +263,91 @@ class App extends Controller
 
   }
 
+    public function motocancelarrota()
+    {
+        if (!empty($_GET['id'])){
+            $id = $_GET['id'];
+            $rota = (new NovaRota())->findById($id);
+            $rota->status = "C";
+            if ($rota->save()){
+                flash("success", "{$this->user->nome}, rota cancelada com sucesso!");
+                $this->router->redirect('app.rotaandamento');
+            }
+        }
+
+    }
+
+  public function rotaandamento()
+  {
+    $rota = "A";
+    $ativo = "S";
+    $rotas = (new NovaRota())->find("login_id = :login_id AND status = :status" , "login_id={$_SESSION["user"]} & status={$rota}", "*, date_format(data_inicio, '%d/%m/%Y') data_inicio")->fetch(true);
+    $ativo = (new Motorista())->find("login_id = :login_id AND ativo = :ativo" , "login_id={$_SESSION["user"]} & ativo={$ativo}")->fetch(true);
+
+    $head = $this->seo->optimize(
+      "Bem vindo(a)",
+      site("desc"),
+      $this->router->route("app.iniciocliente"),
+      routeImage("Cliente")
+    )->render();
+
+    echo $this->view->render("theme/rotas/rotaandamento",[
+      "head" => $head,
+      "user" => $this->user,
+      "rotas" => $rotas,
+      "ativo" => $ativo
+    ]);
+
+  }
+    public function rotacontratada():void
+    {
+        $ativo = "S";
+        $ativo = (new Motorista())->find("login_id = :login_id AND ativo = :ativo" , "login_id={$_SESSION["user"]} & ativo={$ativo}")->fetch(true);
+        $mot = (new Motorista())->find("login_id = :l", "l={$_SESSION['user']}")->fetch(true);
+        foreach ($mot as $moto){
+            $motorista = $moto->id;
+        }
+        $rotas = (new ContrataRota())->find("mot_id = :mot_id", "mot_id={$motorista}")->fetch(true);
+
+        $head = $this->seo->optimize(
+            "Bem vindo(a)",
+            site("desc"),
+            $this->router->route("app.rotafinalizada"),
+            routeImage("Cliente")
+        )->render();
+
+        echo $this->view->render("theme/rotas/rotacontratada",[
+            "head" => $head,
+            "user" => $this->user,
+            "rotas" => $rotas,
+            "ativo" => $ativo
+        ]);
+
+    }
+
+
+    public function rotafinalizada():void
+    {
+        $rota = "F";
+        $ativo = "S";
+        $rotas = (new NovaRota())->find("login_id = :login_id AND status = :status" , "login_id={$_SESSION["user"]} & status={$rota}", "*, date_format(data_inicio, '%d/%m/%Y') data_inicio")->fetch(true);
+        $ativo = (new Motorista())->find("login_id = :login_id AND ativo = :ativo" , "login_id={$_SESSION["user"]} & ativo={$ativo}")->fetch(true);
+
+        $head = $this->seo->optimize(
+            "Bem vindo(a)",
+            site("desc"),
+            $this->router->route("app.rotafinalizada"),
+            routeImage("Cliente")
+        )->render();
+
+        echo $this->view->render("theme/rotas/rotafinalizada",[
+            "head" => $head,
+            "user" => $this->user,
+            "rotas" => $rotas,
+            "ativo" => $ativo
+        ]);
+
+    }
 
 
     /**
@@ -387,6 +478,8 @@ class App extends Controller
         ]);
 
     }
+
+
 
   public function pagamentotheme()
   {

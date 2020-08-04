@@ -25,48 +25,6 @@
                             <strong>Motorista</strong>
                         </a>
                     </div>
-                    <div class="single-item mb-4">
-                        <h4 class="mb-4">job by location</h4>
-                        <a href="#" class="sidebar-btn d-flex justify-content-between mb-3">
-                            <span>New York</span>
-                            <span class="text-right">25 job</span>
-                        </a>
-                        <a href="#" class="sidebar-btn d-flex justify-content-between mb-3">
-                            <span>California</span>
-                            <span class="text-right">25 job</span>
-                        </a>
-                        <a href="#" class="sidebar-btn d-flex justify-content-between mb-3">
-                            <span>Swizerland</span>
-                            <span class="text-right">25 job</span>
-                        </a>
-                        <a href="#" class="sidebar-btn d-flex justify-content-between mb-3">
-                            <span>Canada</span>
-                            <span class="text-right">25 job</span>
-                        </a>
-                        <a href="#" class="sidebar-btn d-flex justify-content-between">
-                            <span>Sweden</span>
-                            <span class="text-right">25 job</span>
-                        </a>
-                    </div>
-                    <div class="single-item mb-4">
-                        <h4 class="mb-4">salary range</h4>
-                        <a href="#" class="sidebar-btn d-flex justify-content-between mb-3">
-                            <span>$20,000-$30,000</span>
-                            <span class="text-right">25 job</span>
-                        </a>
-                        <a href="#" class="sidebar-btn d-flex justify-content-between mb-3">
-                            <span>$25,000-$45,000</span>
-                            <span class="text-right">25 job</span>
-                        </a>
-                        <a href="#" class="sidebar-btn d-flex justify-content-between">
-                            <span>$40,000-$70,000</span>
-                            <span class="text-right">25 job</span>
-                        </a>
-                    </div>
-                    <div class="single-item">
-                        <h4 class="mb-4">filter by salary</h4>
-                        <input type="text" id="range" value="" name="range" />
-                    </div>
                 </div>
             </div>
         </div>

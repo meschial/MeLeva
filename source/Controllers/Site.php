@@ -101,9 +101,8 @@ class Site extends Controller
             "head" => $head,
             "user" => $this->user,
             "rotas" => (new NovaRota())
-            ->find("","", "* ,date_format(data_inicio, '%d/%m/%Y') data_inicio")
-            ->fetch(true),
-          "paginator" => $pager->render()
+            ->find("status = :status","status=A", "* ,date_format(data_inicio, '%d/%m/%Y') data_inicio")
+            ->fetch(true)
         ]);
 
     }

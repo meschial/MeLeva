@@ -63,8 +63,9 @@
                                 <button type="submit" class="btn btn-primary btn-lg btn-block active">Cadastrar</button>
                             </div>
                         </form>
-                        <?php endif; ?>
+                        <?php else: ?>
                         <h1>Vc não está ativo como motorista!</h1>
+                        <?php endif; ?>
                     </ul>
                 </div>
                 <div>

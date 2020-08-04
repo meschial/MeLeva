@@ -15,10 +15,9 @@
                   <h2>Produto: <b><?= $vend->nome ?></b></h2>
                   <h4>Descrição: <b><?= $vend->descricao ?></b></h4>
                   <h4>Valor R$: <b><?= number_format( $vend->valor, 2, ',', ' ') ?></b> | Data: <b><?= $vend->date ?></b></h4>
-
+                  </br>
                   <div class="row">
-                    <a href="#" class="btn btn-primary btn-lg btn-teste active">Pagar para o Motorista</a>
-                    <a href="<?= $router->route('app.pagamentorotapagseguro', ['id'=>$vend->id]) ?>" class="btn btn-primary btn-lg btn-teste active">Pagar com Cartão</a>
+                    <a href="<?= $router->route('app.pagamentorotapagseguro', ['id'=>$vend->id]) ?>" class="btn btn-primary btn-lg btn-block active">Pagar com Cartão</a>
                   </div>
 
                 <?php endforeach; ?>

@@ -14,7 +14,7 @@ $router->namespace("Source\Controllers");
  */
 $router->group(null);
 $router->get("/", "Site:inicio", "site.inicio");
-$router->get("/rotas/{page}", "Site:rotas", "site.rotas");
+$router->get("/rotas}", "Site:rotas", "site.rotas");
 $router->get("/politica", "Site:politica", "site.politica");
 $router->get("/termos", "Site:termos", "site.termos");
 
@@ -77,6 +77,10 @@ $router->get("/novarota", "App:novarota", "app.novarota");
 $router->get("/suasrotas", "App:suasrotas", "app.suasrotas");
 $router->get("/contratarrota", "App:contratarrota", "app.contratarrota");
 $router->get("/rotapagamento", "App:rotapagamento", "app.rotapagamento");
+$router->get("/rotaandamento", "App:rotaandamento", "app.rotaandamento");
+$router->get("/rotacontratada", "App:rotacontratada", "app.rotacontratada");
+$router->get("/motocancelarrota", "App:motocancelarrota", "app.motocancelarrota");
+$router->get("/rotafinalizada", "App:rotafinalizada", "app.rotafinalizada");
 $router->get("/pagamentotheme", "App:pagamentotheme", "app.pagamentotheme");
 $router->get("/listaderotas", "App:listaderotas", "app.listaderotas");
 $router->get("/pagamentoefetuado", "App:pagamentoefetuado", "app.pagamentoefetuado");
