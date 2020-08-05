@@ -13,7 +13,7 @@
               </div>
 
               <?php
-              if (!empty($rotas)): var_dump($rotas);
+              if (!empty($rotas)):
                 foreach ($rotas as $rota):
                     if ($rota->tipo == "2"){$rota->tipo = "	Em análise";}else{$rota->tipo = "Pago";}
 
@@ -27,9 +27,7 @@
                         <li class="mb-3"><h5><i class="fa fa-pie-chart"></i>Nome do produto: <?= $rota->nome;?> / Valor cobrado R$: <?= number_format($rota->valor,2,",",".")?></h5></li>
                         <li><h5><i class="fa fa-clock-o"></i> Data do envio: <?= $rota->data_inicio; ?> | Situação: <b><?= $rota->tipo ?></b></h5> </li>
                       </ul>
-                      <div class="row">
-                        <a href="<?= $router->route('app.detalhe', ['id'=>$rota->id_venda]) ?>" class="btn btn-primary btn-lg btn-block active">Detalhes</a>
-                      </div>
+
                     </div>
                   </div>
 

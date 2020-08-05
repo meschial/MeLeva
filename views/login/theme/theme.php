@@ -68,8 +68,8 @@
                                           <a class="dropdown-item" href="<?= $router->route("admin.home");?>">Painel Admin</a>
                                       <?php endif; ?>
                                         <a class="dropdown-item" href="<?= $router->route("app.meusdados");?>">Meus Dados</a>
-                                        <a class="dropdown-item" href="<?= $router->route("app.rota");?>">Minhas Rotas</a>
-                                        <a class="dropdown-item" href="<?= $router->route("app.pagamentotheme");?>">Meus Pedidos</a>
+                                        <a class="dropdown-item" href="<?= $router->route("app.novarota");?>">Minhas Rotas</a>
+                                        <a class="dropdown-item" href="<?= $router->route("app.listaderotas");?>">Meus Pedidos</a>
                                         <a class="dropdown-item" href="<?= $router->route("app.logoff"); ?>">sair</a>
                                     </div>
                                 </div>

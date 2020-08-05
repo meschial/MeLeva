@@ -13,7 +13,7 @@
 
 
                         <?php if (!empty($ativo) and (!empty($rotas))): foreach ($rotas as $rota)?>
-
+                            <?php if ($rota->status === "3"){$status = "Pago";} ?>
 
                             <div class="main-content">
                             <div class="single-content1">
@@ -21,28 +21,26 @@
                             ?>
                             <div class="single-job mb-4 d-lg-flex justify-content-between">
                                 <div class="job-text">
-                                    <h4><b>CEP ORIGEM: <?= $rota->cep_inicio." <strong> / CEP DESTINO: </strong> ".$rota->cep_fim?></b></h4>
+                                    <h4><b>Produto: <?= $rota->nome ?></b></h4>
                                     <ul class="mt-4">
-                                        <li class="mb-3"><h5><i class="fa fa-map-marker"></i>Cidade Origem: <?= $rota->cidade_inicio?> / Destino: <?= $rota->cidade_fim?></h5></li>
-                                        <li class="mb-3"><h5><i class="fa fa-pie-chart"></i>Qtd. de Pacotes: <?= $rota->quantidade;?> / Valor por pacote R$: <?= number_format($rota->valor,2,",",".");?></h5></li>
-                                        <li><h5><i class="fa fa-clock-o"></i> Data: <?= $rota->data_inicio; ?></h5></li>
+                                        <li class="mb-3"><h5>Descrição: <?= $rota->descricao?></h5></li>
+                                        <li class="mb-3"><h5>Valor: <?= number_format($rota->valor,2,",",".");?></h5></li>
+                                        <li class="mb-3"><h5>Status: <?= $status?></h5></li>
+
                                     </ul>
                                 </div>
-                                <div class="job-btn align-self-center">
+                            </div>
+                            <div class="job-btn align-self-center">
 
-                                    <a href="<?= $router->route('app.motocancelarrota', ['id' => $rota->id]) ?>" class="btn btn-primary">Ver dados</a>
-                                    <a href="<?= $router->route('app.motocancelarrota', ['id' => $rota->id]) ?>" class="btn btn-danger">Cancelar</a>
+                                <a href="<?= $router->route('app.motocancelarrota', ['id' => $rota->id]) ?>" class="btn btn-primary">Ver dados</a>
+                                <a href="<?= $router->route('app.motocancelarrota', ['id' => $rota->id]) ?>" class="btn btn-danger">Cancelar</a>
 
-                                </div>
                             </div>
                         <?php endforeach; ?>
 
                             </div>
                             </div>
 
-
-                        <?php else: ?>
-                            <h1>Vc não está ativo como motorista!</h1>
                         <?php endif; ?>
                     </ul>
                 </div>

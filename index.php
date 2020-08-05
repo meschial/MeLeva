@@ -14,9 +14,11 @@ $router->namespace("Source\Controllers");
  */
 $router->group(null);
 $router->get("/", "Site:inicio", "site.inicio");
-$router->get("/rotas}", "Site:rotas", "site.rotas");
+$router->get("/rotas", "Site:rotas", "site.rotas");
 $router->get("/politica", "Site:politica", "site.politica");
 $router->get("/termos", "Site:termos", "site.termos");
+$router->get("/buscarotas", "Site:buscarotas", "site.buscarotas");
+$router->post("/buscarota", "Site:buscarota", "site.buscarota");
 
 $router->group("/admin");
 $router->get("/", "Admin:home", "admin.home");
@@ -38,6 +40,9 @@ $router->get("/detalhepagamento", "Admin:detalhepagamento", "admin.detalhepagame
 $router->get("/pagamentosdetalhe", "Admin:pagamentosdetalhe", "admin.pagamentosdetalhe");
 $router->post("/cancelarpagamento", "Admin:cancelarpagamento", "admin.cancelarpagamento");
 $router->post("/devolverpagamento", "Admin:devolverpagamento", "admin.devolverpagamento");
+
+$router->get("/detalhepagamento", "Admin:detalhepagamento", "admin.detalhepagamento");
+
 
 //ROTAS GET COM ID
 $router->get("/editarusuario", "Admin:editarUsuario", "admin.editarUsuario");
@@ -79,6 +84,7 @@ $router->get("/contratarrota", "App:contratarrota", "app.contratarrota");
 $router->get("/rotapagamento", "App:rotapagamento", "app.rotapagamento");
 $router->get("/rotaandamento", "App:rotaandamento", "app.rotaandamento");
 $router->get("/rotacontratada", "App:rotacontratada", "app.rotacontratada");
+$router->get("/saldo", "App:saldo", "app.saldo");
 $router->get("/motocancelarrota", "App:motocancelarrota", "app.motocancelarrota");
 $router->get("/rotafinalizada", "App:rotafinalizada", "app.rotafinalizada");
 $router->get("/pagamentotheme", "App:pagamentotheme", "app.pagamentotheme");
@@ -88,6 +94,7 @@ $router->get("/cancelarrota", "App:cancelarrota", "app.cancelarrota");
 $router->get("/rotascanceladas", "App:rotascanceladas", "app.rotascanceladas");
 $router->get("/detalhepagamento", "App:detalhepagamento", "app.detalhepagamento");
 $router->get("/pagamentorotapagseguro", "App:pagamentorotapagseguro", "app.pagamentorotapagseguro");
+
 
 
 

@@ -197,7 +197,7 @@ class App extends Controller
       routeImage("Cliente")
     )->render();
 
-    echo $this->view->render("theme/rotas/contratarrota",[
+    echo $this->view->render("theme/pagamentos/contratarrota",[
       "head" => $head,
       "user" => $this->user,
       "rotas" => $rotas
@@ -301,13 +301,16 @@ class App extends Controller
   }
     public function rotacontratada():void
     {
+        $rotas = "";
         $ativo = "S";
         $ativo = (new Motorista())->find("login_id = :login_id AND ativo = :ativo" , "login_id={$_SESSION["user"]} & ativo={$ativo}")->fetch(true);
         $mot = (new Motorista())->find("login_id = :l", "l={$_SESSION['user']}")->fetch(true);
-        foreach ($mot as $moto){
-            $motorista = $moto->id;
+        if ($mot){
+            foreach ($mot as $moto){
+                $motorista = $moto->id;
+            }
+            $rotas = (new ContrataRota())->find("mot_id = :mot_id AND status = :s", "mot_id={$motorista} & s=3")->fetch(true);
         }
-        $rotas = (new ContrataRota())->find("mot_id = :mot_id", "mot_id={$motorista}")->fetch(true);
 
         $head = $this->seo->optimize(
             "Bem vindo(a)",
@@ -325,6 +328,33 @@ class App extends Controller
 
     }
 
+    public function saldo():void
+    {
+        $ativo = "S";
+        $ativo = (new Motorista())->find("login_id = :login_id AND ativo = :ativo" , "login_id={$_SESSION["user"]} & ativo={$ativo}")->fetch(true);
+        $mot = (new Motorista())->find("login_id = :l", "l={$_SESSION['user']}")->fetch(true);
+        foreach ($mot as $moto){
+            $motorista = $moto->id;
+        }
+        $rotas = (new ContrataRota())->find("mot_id = :mot_id and status = :s", "mot_id={$motorista} & s=4", "*, date_format(date, '%d/%m/%Y') date")->fetch(true);
+        $valor = (new ContrataRota())->find("mot_id = :mot_id and status = :s", "mot_id={$motorista} & s=4", " *, SUM(valor) as valores")->fetch(true);
+
+        $head = $this->seo->optimize(
+            "Bem vindo(a)",
+            site("desc"),
+            $this->router->route("app.rotafinalizada"),
+            routeImage("Cliente")
+        )->render();
+
+        echo $this->view->render("theme/rotas/saldo",[
+            "head" => $head,
+            "user" => $this->user,
+            "rotas" => $rotas,
+            "ativo" => $ativo,
+            "valor" => $valor
+        ]);
+
+    }
 
     public function rotafinalizada():void
     {
@@ -527,7 +557,7 @@ class App extends Controller
       "head" => $head,
       "user" => $this->user,
       "rotas" => (new ContrataRota())
-        ->innerVenda("venda.login_id = :lo","lo={$_SESSION['user']}","*, venda.id as id_venda, venda.status as tipo, date_format(data_inicio, '%d/%m/%Y') data_inicio")
+        ->innerVenda("venda.login_id = :lo and venda.status = :sta","lo={$_SESSION['user']} & sta=3","*, venda.id as id_venda, venda.status as tipo, date_format(data_inicio, '%d/%m/%Y') data_inicio")
         ->fetch(true)
     ]);
   }
@@ -568,8 +598,8 @@ class App extends Controller
     echo $this->view->render("theme/pagamentos/rotascanceladas",[
       "head" => $head,
       "user" => $this->user,
-      "rotas" => (new ContrataRota())
-        ->innerVenda("venda.login_id = :lo","lo={$_SESSION['user']}","*, venda.id as id_venda, venda.status as tipo, date_format(data_inicio, '%d/%m/%Y') data_inicio")
+        "rotas" => (new ContrataRota())
+        ->innerVenda("venda.login_id = :lo and venda.status = :sta","lo={$_SESSION['user']} & sta=7","*, venda.id as id_venda, venda.status as tipo, date_format(data_inicio, '%d/%m/%Y') data_inicio")
         ->fetch(true)
     ]);
   }
@@ -620,7 +650,7 @@ class App extends Controller
     if (!empty($_GET['id'])){
       $id = $_GET['id'];
       $rota = (new ContrataRota())->findById($id);
-      $rota->status = "C";
+      $rota->status = "7";
       if ($rota->save()){
         flash("success", "{$this->user->nome}, rota cancelada com sucesso!");
         $this->router->redirect('app.listaderotas');

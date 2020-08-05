@@ -29,10 +29,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <form action="#" class="d-md-flex justify-content-between">
-                        <input type="text" placeholder = "Digite CEP de Origem" required>
-                        <input type="text" placeholder = "Digite CEP de Destino" required>
-                        <input type="text" placeholder = "Digite a Data do envio" required>
+                    <div class="login_form_callback">
+                        <?= flash(); ?>
+                    </div>
+                    <form action="<?= $router->route("site.buscarotas"); ?>" method="post" enctype="multipart/form-data" class="d-md-flex justify-content-between">
+                        <input type="text" name="origem" data-mask="99999-999" placeholder="Digite CEP de Origem">
+                        <input type="text" name="destino" data-mask="99999-999" placeholder="Digite CEP de Destino">
+                        <input type="date" name="dete" placeholder="Digite a Data do envio">
                         <button type="submit" class="template-btn">Pesquisar</button>
                     </form>
                 </div>
@@ -73,3 +76,6 @@
     </div>
 </section>
 <!-- Pricing Table End -->
+<?php $v->start("scripts"); ?>
+    <script src="<?= asset("/js/form.js"); ?>"></script>
+<?php $v->end(); ?>

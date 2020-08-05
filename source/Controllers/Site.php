@@ -78,7 +78,7 @@ class Site extends Controller
     /**
      *
      */
-    public function rotas(?array $data): void
+    public function rotas(): void
     {
         $head = $this->seo->optimize(
             "Bem vindo(a)",
@@ -87,16 +87,6 @@ class Site extends Controller
             routeImage("Cliente")
         )->render();
 
-      //  $list = (new User())->find()->fetch(true);
-        //** @var  $user Motorista*/
-       // foreach ($list as $user){
-        //    var_dump($user);
-        //    var_dump($user->rota());
-      // }
-
-      $pager = new Paginator($this->router->route("/rotas/"));
-      $pager->pager(100, 10, ($data['page'] ?? 1));
-
         echo $this->view->render("theme/rotas",[
             "head" => $head,
             "user" => $this->user,
@@ -104,6 +94,32 @@ class Site extends Controller
             ->find("status = :status","status=A", "* ,date_format(data_inicio, '%d/%m/%Y') data_inicio")
             ->fetch(true)
         ]);
+    }
 
+    public function buscarota($data): void
+    {
+
+        if (empty($data)){
+            $this->router->redirect("app.motorista");
+        }else{
+            $this->router->redirect("app.motorista");
+        }
+    }
+
+    public function buscarotas(): void
+    {
+
+        $head = $this->seo->optimize(
+            "Bem vindo(a)",
+            site("desc"),
+            $this->router->route("app.iniciocliente"),
+            routeImage("Cliente")
+        )->render();
+
+        echo $this->view->render("theme/buscarotas",[
+            "head" => $head,
+            "user" => $this->user
+        ]);
+        return;
     }
 }

@@ -26,9 +26,7 @@
                         <li class="mb-3"><h5><i class="fa fa-pie-chart"></i>Nome do produto: <?= $rota->nome;?> / Valor cobrado R$: <?= number_format($rota->valor,2,",",".")?></h5></li>
                         <li><h5><i class="fa fa-clock-o"></i> Data do envio: <?= $rota->data_inicio; ?></h5></li>
                       </ul>
-                      <div class="row">
-                        <a href="<?= $router->route('app.detalhepagamento') ?>" class="btn btn-primary btn-lg btn-block active">Detalhes</a>
-                      </div>
+
                     </div>
                   </div>
 

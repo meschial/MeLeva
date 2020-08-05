@@ -127,7 +127,7 @@ class Web extends Controller
             "Crie sua nova senha | ". site("name"),
             site("desc"),
             $this->router->route("web.reset"),
-            routeImage("Reset"),
+            routeImage("Reset")
             )->render();
         echo $this->view->render("theme/login/reset",[
             "head" => $head

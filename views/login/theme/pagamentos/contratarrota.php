@@ -1,4 +1,4 @@
-<?php $v->layout("theme/rotas/rotas"); ?>
+<?php $v->layout("theme/pagamentos/theme");?>
 
 <div class="col-lg-8">
     <div class="main-content">
