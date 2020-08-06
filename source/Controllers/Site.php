@@ -45,35 +45,6 @@ class Site extends Controller
         ]);
     }
 
-  public function politica()
-  {
-    $head = $this->seo->optimize(
-      "Bem vindo a Politica do".site("name"),
-      site("desc"),
-      $this->router->route("site.politica"),
-      routeImage("Politica")
-    )->render();
-
-    echo $this->view->render("theme/usuario/politica",[
-      "head" => $head,
-      "user" =>$this->user
-    ]);
-  }
-  public function termos()
-  {
-    $head = $this->seo->optimize(
-      "Bem vindo a Termos do".site("name"),
-      site("desc"),
-      $this->router->route("site.termos"),
-      routeImage("Termos")
-    )->render();
-
-    echo $this->view->render("theme/usuario/termos",[
-      "head" => $head,
-      "user" =>$this->user
-    ]);
-  }
-
 
     /**
      *
@@ -81,7 +52,7 @@ class Site extends Controller
     public function rotas(): void
     {
         $head = $this->seo->optimize(
-            "Bem vindo(a)",
+            "Procurar Rotas",
             site("desc"),
             $this->router->route("app.iniciocliente"),
             routeImage("Cliente")
@@ -107,7 +78,7 @@ class Site extends Controller
             $this->router->redirect("site.rotas");
         }
         $head = $this->seo->optimize(
-            "Bem vindo(a)",
+            "Buscar Rotas",
             site("desc"),
             $this->router->route("app.iniciocliente"),
             routeImage("Cliente")
@@ -123,7 +94,7 @@ class Site extends Controller
 
     public function quemsomos(){
         $head = $this->seo->optimize(
-            "Bem vindo(a)",
+            "Quem Somos",
             site("desc"),
             $this->router->route("app.iniciocliente"),
             routeImage("Cliente")
@@ -137,7 +108,7 @@ class Site extends Controller
     }
     public function contato(){
         $head = $this->seo->optimize(
-            "Bem vindo(a)",
+            "Contatos",
             site("desc"),
             $this->router->route("app.iniciocliente"),
             routeImage("Cliente")

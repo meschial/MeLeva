@@ -60,6 +60,8 @@ class App extends Controller
      * @param $data
      * @throws \Exception
      */
+    //Função cadastro de Motorista CNH
+
     public function motorista($data)
     {//id	tipo_cnh	cnh	foto	ativo	login_id
       if (!empty($data)) {
@@ -113,7 +115,7 @@ class App extends Controller
       }
 
       $head = $this->seo->optimize(
-        "Motoristas",
+        "Motorista",
         site("desc"),
         $this->router->route("app.meusdados"),
         routeImage("meusdados")
@@ -276,7 +278,7 @@ class App extends Controller
         }
 
     }
-
+//Função das rotas em andamento que aparece para o motorista
   public function rotaandamento()
   {
     $rota = "A";
@@ -285,7 +287,7 @@ class App extends Controller
     $ativo = (new Motorista())->find("login_id = :login_id AND ativo = :ativo" , "login_id={$_SESSION["user"]} & ativo={$ativo}")->fetch(true);
 
     $head = $this->seo->optimize(
-      "Bem vindo(a)",
+      "Rotas em Andamento",
       site("desc"),
       $this->router->route("app.iniciocliente"),
       routeImage("Cliente")
@@ -299,6 +301,8 @@ class App extends Controller
     ]);
 
   }
+
+    //Função de Rotas Contratadas que aparece para o Motorista
     public function rotacontratada():void
     {
         $rotas = "";
@@ -313,7 +317,7 @@ class App extends Controller
         }
 
         $head = $this->seo->optimize(
-            "Bem vindo(a)",
+            "Rotas Contratadas",
             site("desc"),
             $this->router->route("app.rotafinalizada"),
             routeImage("Cliente")
@@ -355,6 +359,7 @@ class App extends Controller
         ]);
     }
 
+    //Função de Seus Saldos que aparece para o Motorista
     public function saldo():void
     {
         $ativo = "S";
@@ -367,7 +372,7 @@ class App extends Controller
         $valor = (new ContrataRota())->find("mot_id = :mot_id and status = :s", "mot_id={$motorista} & s=4", " *, SUM(valor) as valores")->fetch(true);
 
         $head = $this->seo->optimize(
-            "Bem vindo(a)",
+            "Seus Saldos",
             site("desc"),
             $this->router->route("app.rotafinalizada"),
             routeImage("Cliente")
@@ -383,6 +388,7 @@ class App extends Controller
 
     }
 
+    //Função de Rotas Finalizadas que aparece para o Motorista
     public function rotafinalizada():void
     {
         $rota = "F";
@@ -391,7 +397,7 @@ class App extends Controller
         $ativo = (new Motorista())->find("login_id = :login_id AND ativo = :ativo" , "login_id={$_SESSION["user"]} & ativo={$ativo}")->fetch(true);
 
         $head = $this->seo->optimize(
-            "Bem vindo(a)",
+            "Rotas Finalizadas",
             site("desc"),
             $this->router->route("app.rotafinalizada"),
             routeImage("Cliente")
@@ -433,6 +439,7 @@ class App extends Controller
      * @param $data
      * @throws \Exception
      */
+    //Função de nova rota que aparece para o motorista
     public function novarota($data):void
     {//id	quantidade	valor	cep_inicio	cep_fim	data_inicio	cidade_inicio	cidade_fim	tamahno	motorista_id
 
@@ -525,7 +532,7 @@ class App extends Controller
         }
 
         $head = $this->seo->optimize(
-            "Bem vindo(a)",
+            "Nova Rota",
             site("desc"),
             $this->router->route("app.iniciocliente"),
             routeImage("Cliente")
@@ -555,11 +562,11 @@ class App extends Controller
       "user" => $this->user
     ]);
   }
-
+//Função que mostra aguardando pagamento para o cliente
   public function listaderotas()
   {
     $head = $this->seo->optimize(
-      "Bem vindo(a)",
+      "Aguardando Pagamento",
       site("desc"),
       $this->router->route("app.listaderotas"),
       routeImage("Cliente")
@@ -574,10 +581,11 @@ class App extends Controller
     ]);
   }
 
+  //Função Pagamentos Efetuados que aparece para o cliente
   public function pagamentoefetuado()
   {
     $head = $this->seo->optimize(
-      "Bem vindo(a)",
+      "Pagamentos Efetuado",
       site("desc"),
       $this->router->route("app.pagamentoefetuado"),
       routeImage("pagamentoefetuado")
@@ -616,10 +624,11 @@ class App extends Controller
     ]);
   }
 
+  //Função que mostra pagamento cancelados para o cliente
   public function rotascanceladas()
   {
     $head = $this->seo->optimize(
-      "Bem vindo(a)",
+      "Pagamentos Cancelados",
       site("desc"),
       $this->router->route("app.listaderotas"),
       routeImage("Cliente")
@@ -634,6 +643,7 @@ class App extends Controller
     ]);
   }
 
+  //Função de pagamento do Pague Seguro para o cliente
   public function pagamentorotapagseguro()
 {
   if (!empty($_GET['id'])){
@@ -644,7 +654,7 @@ class App extends Controller
     $this->router->redirect('app.listaderotas');
   }
   $head = $this->seo->optimize(
-    "Bem vindo(a)",
+    "CHECKOUT PAGSEGURO",
     site("desc"),
     $this->router->route("app.pagamentorotapagseguro"),
     routeImage("Pagamento")
@@ -691,6 +701,7 @@ class App extends Controller
     /**
      * @param array $data
      */
+    //Função de Cadastrar endereço do Motorista
     public function endereco(array $data): void
     {
         if (!empty($data)){
@@ -817,6 +828,7 @@ class App extends Controller
     /**
      * @param array $data
      */
+    //Função Comentario que aparece para o Motorista
     public function comentario(array $data):void
     {
         if (!empty($data)){
@@ -876,6 +888,7 @@ class App extends Controller
     /**
      *
      */
+    //Função de Meus dados que aparece para o Motorista
     public function home(array $data): void
     {
         if (!empty($data)){
@@ -937,7 +950,7 @@ class App extends Controller
         }
 
         $head = $this->seo->optimize(
-            "Bem vindo(a) {$this->user->nome} | ". site("name"),
+            "Seus Dados {$this->user->nome} | ". site("name"),
             site("desc"),
             $this->router->route("app.home"),
             routeImage("Conta de {$this->user->nome}"),
