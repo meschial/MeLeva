@@ -30,7 +30,7 @@
                   elseif ($venda->status == "6"){$venda->status = "Devolvida";}
                   elseif ($venda->status == "7"){$venda->status = "Cancelada";}
                   elseif ($venda->status == "8"){$venda->status = "Debitado";}
-                  elseif ($venda->status == "P"){$venda->status = "Pago";}
+                  elseif ($venda->status == "P"){$venda->status = "Tranferido";}
                   elseif ($venda->status == "9"){$venda->status = "Retenção temporária";}?>
                   <tr>
                     <td><?= $venda->id ?></td>
@@ -55,7 +55,7 @@
                           <div class="badge badge-primary"><?= $venda->status ?></div>
                         <?php } elseif ($venda->status == "Retenção temporária"){  ?>
                           <div class="badge badge-transparent"><?= $venda->status ?></div>
-                        <?php } elseif ($venda->status == "Pago"){  ?>
+                        <?php } elseif ($venda->status == "Tranferido"){  ?>
                               <div class="badge badge-success"><?= $venda->status ?></div>
                           <?php } ?>
                       </td>
