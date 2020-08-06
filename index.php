@@ -44,6 +44,8 @@ $router->get("/detalhepagamento", "Admin:detalhepagamento", "admin.detalhepagame
 $router->get("/pagamentosdetalhe", "Admin:pagamentosdetalhe", "admin.pagamentosdetalhe");
 $router->post("/cancelarpagamento", "Admin:cancelarpagamento", "admin.cancelarpagamento");
 $router->post("/devolverpagamento", "Admin:devolverpagamento", "admin.devolverpagamento");
+$router->get("/pagar", "Admin:pagar", "admin.pagar");
+$router->get("/pagars", "Admin:pagars", "admin.pagars");
 
 $router->get("/detalhepagamento", "Admin:detalhepagamento", "admin.detalhepagamento");
 

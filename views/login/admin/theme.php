@@ -92,6 +92,7 @@
                 <li><a class="nav-link" href="<?= $router->route('admin.pagamentoscancelados') ?>">Pagamentos Cancelados</a></li>
                 <li><a class="nav-link" href="<?= $router->route('admin.pagamentosandamento') ?>">Pagamentos em Andamento</a></li>
                 <li><a class="nav-link" href="<?= $router->route('admin.todospagamentos') ?>">Todos os Pagamentos</a></li>
+                <li><a class="nav-link" href="<?= $router->route('admin.pagar') ?>">Pagar</a></li>
               </ul>
             </li>
             <li class="menu-header">Site</li>

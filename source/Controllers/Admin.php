@@ -498,6 +498,36 @@ class Admin extends Controller
     ]);
   }
 
+    public function pagar()
+    {
+        $head = $this->seo->optimize(
+            "Todos os pagamentos da ". site("name"),
+            site("desc"),
+            $this->router->route("admin.todospagamentos"),
+            routeImage("todospagamentos")
+        )->render();
+
+        echo $this->view->render("admin/pagamentos/pagar",[
+            "head" => $head,
+            "user" => $this->user,
+            "vendas" => (new ContrataRota())->find("status = :s","s=4","*, date_format(date, '%d/%m/%Y') date")->fetch(true)
+        ]);
+    }
+
+    public function pagars()
+    {
+        if (!empty($_GET['id'])){
+            $pagar = (new ContrataRota())->findById($_GET['id']);
+            $pagar->status = "P";
+            $pagar->save();
+            flash("success", "Pago com sucesso!");
+            $this->router->redirect('admin.pagar');
+        }else{
+            $this->router->redirect('admin.pagar');
+        }
+
+    }
+
   public function pagamentosandamento()
   {
     $head = $this->seo->optimize(

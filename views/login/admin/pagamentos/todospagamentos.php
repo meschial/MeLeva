@@ -30,6 +30,7 @@
                   elseif ($venda->status == "6"){$venda->status = "Devolvida";}
                   elseif ($venda->status == "7"){$venda->status = "Cancelada";}
                   elseif ($venda->status == "8"){$venda->status = "Debitado";}
+                  elseif ($venda->status == "P"){$venda->status = "Pago";}
                   elseif ($venda->status == "9"){$venda->status = "Retenção temporária";}?>
                   <tr>
                     <td><?= $venda->id ?></td>
