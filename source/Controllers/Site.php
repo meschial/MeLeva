@@ -96,19 +96,16 @@ class Site extends Controller
         ]);
     }
 
-    public function buscarota($data): void
+    public function buscarotas($data): void
     {
-
-        if (empty($data)){
-            $this->router->redirect("app.motorista");
+        if (!empty($data)){
+            $origem = $data['origem'];
+            $destino = $data['destino'];
+            $dete = $data['dete'];
+            $rotas = (new NovaRota())->find("cep_inicio = :inicio AND cep_fim = :fim AND data_inicio = :data", "inicio={$origem} & fim={$destino} & data={$dete}")->fetch(true);
         }else{
-            $this->router->redirect("app.motorista");
+            $this->router->redirect("site.rotas");
         }
-    }
-
-    public function buscarotas(): void
-    {
-
         $head = $this->seo->optimize(
             "Bem vindo(a)",
             site("desc"),
@@ -118,8 +115,37 @@ class Site extends Controller
 
         echo $this->view->render("theme/buscarotas",[
             "head" => $head,
-            "user" => $this->user
+            "user" => $this->user,
+            "rotas" => $rotas
         ]);
         return;
+    }
+
+    public function quemsomos(){
+        $head = $this->seo->optimize(
+            "Bem vindo(a)",
+            site("desc"),
+            $this->router->route("app.iniciocliente"),
+            routeImage("Cliente")
+        )->render();
+
+        echo $this->view->render("theme/quemsomos",[
+            "head" => $head,
+            "user" => $this->user
+        ]);
+
+    }
+    public function contato(){
+        $head = $this->seo->optimize(
+            "Bem vindo(a)",
+            site("desc"),
+            $this->router->route("app.iniciocliente"),
+            routeImage("Cliente")
+        )->render();
+
+        echo $this->view->render("theme/contato",[
+            "head" => $head,
+            "user" => $this->user
+        ]);
     }
 }

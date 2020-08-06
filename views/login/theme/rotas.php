@@ -42,18 +42,15 @@
             <div class="col-lg-4">
                 <div class="sidebar mt-5 mt-lg-0">
                     <div class="single-item mb-4">
-                        <h4 class="mb-4">Teste</h4>
-                        <a href="#" class="sidebar-btn d-flex justify-content-between mb-3">
-                            <span>Teste</span>
-                            <span class="text-right">Teste</span>
+                        <h4 class="mb-4">Menu</h4>
+                        <a href="<?= $router->route('app.meusdados') ?>" class="sidebar-btn d-flex justify-content-between mb-3">
+                            <span class="text-right">Meus dados</span>
                         </a>
-                        <a href="#" class="sidebar-btn d-flex justify-content-between mb-3">
-                            <span>Teste</span>
-                            <span class="text-right">Teste</span>
+                        <a href="<?= $router->route('app.listaderotas') ?>" class="sidebar-btn d-flex justify-content-between mb-3">
+                            <span class="text-right">Meus Pedidos</span>
                         </a>
-                        <a href="#" class="sidebar-btn d-flex justify-content-between">
-                            <span>Teste</span>
-                            <span class="text-right">Teste</span>
+                        <a href="<?= $router->route('site.contato') ?>" class="sidebar-btn d-flex justify-content-between">
+                            <span class="text-right">Contato</span>
                         </a>
                     </div>
                 </div>

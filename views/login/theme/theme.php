@@ -41,14 +41,8 @@
                         <li class="active"><a href="<?= $router->route("site.inicio");?>">inicio</a></li>
                         <li><a href="<?= $router->route("site.rotas");?>">Procurar</a></li>
                         <li><a href="<?= $router->route("app.novarota");?>">Oferecer Envio</a></li>
-                        <li><a href="<?= $router->route("web.teste"); ?>">Quem Somos</a></li>
-                        <li><a href="#">contato</a>
-                            <ul class="sub-menu">
-                                <li><a href="job-search.html">Job Search</a></li>
-                                <li><a href="job-single.html">Job Single</a></li>
-                                <li><a href="<?= $router->route('site.termos') ?>">Termos de Serviço</a></li>
-                                <li><a href="<?= $router->route('site.politica') ?>">Política de Privacidade</a></li>
-                            </ul>
+                        <li><a href="<?= $router->route("site.quemsomos");?>">Quem Somos</a></li>
+                        <li><a href="<?= $router->route("site.contato");?>">Contatos</a></li>
                         </li>
                         <li class="menu-btn">
                             <?php if (empty($_SESSION["user"])): ?>
@@ -64,7 +58,7 @@
                                         <?php endif; ?>
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                      <?php if (!$user->admin <> "S"): ?>
+                                      <?php if ($user->admin === "S"): ?>
                                           <a class="dropdown-item" href="<?= $router->route("admin.home");?>">Painel Admin</a>
                                       <?php endif; ?>
                                         <a class="dropdown-item" href="<?= $router->route("app.meusdados");?>">Meus Dados</a>
@@ -102,19 +96,18 @@
             <div class="row">
                 <div class="col-xl-2 col-lg-3">
                     <div class="single-widget-home mb-5 mb-lg-0">
-                        <h3 class="mb-4">top products</h3>
+                        <h3 class="mb-4">Informações</h3>
                         <ul>
-                            <li class="mb-2"><a href="#">managed website</a></li>
-                            <li class="mb-2"><a href="#">managed reputation</a></li>
-                            <li class="mb-2"><a href="#">power tools</a></li>
-                            <li><a href="#">marketing service</a></li>
+                            <li class="mb-2"><a href="<?= $router->route("site.quemsomos");?>">Quem somos</a></li>
+                            <li class="mb-2"><a href="<?= $router->route("site.contato");?>">Contato</a></li>
+                            <li class="mb-2"><a href="<?= $router->route("site.rotas");?>">Rotas</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-xl-5 offset-xl-1 col-lg-6">
                     <div class="single-widget-home mb-5 mb-lg-0">
-                        <h3 class="mb-4">newsletter</h3>
-                        <p class="mb-4">You can trust us. we only send promo offers, not a single.</p>
+                        <h3 class="mb-4">Newsletter</h3>
+                        <p class="mb-4">Siga nosso Newsletter para receber nossas informações.</p>
                         <form action="#">
                             <input type="email" placeholder="Your email here" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email here'" required>
                             <button type="submit" class="template-btn">subscribe now</button>
@@ -139,25 +132,7 @@
             </div>
         </div>
     </div>
-    <div class="footer-copyright">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-6">
 
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="social-icons">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </footer>
 <!-- Footer Area End -->
 

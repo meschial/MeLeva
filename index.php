@@ -18,7 +18,11 @@ $router->get("/rotas", "Site:rotas", "site.rotas");
 $router->get("/politica", "Site:politica", "site.politica");
 $router->get("/termos", "Site:termos", "site.termos");
 $router->get("/buscarotas", "Site:buscarotas", "site.buscarotas");
-$router->post("/buscarota", "Site:buscarota", "site.buscarota");
+$router->post("/buscarotas", "Site:buscarotas", "site.buscarotas");
+
+$router->get("/quemsomos", "Site:quemsomos", "site.quemsomos");
+$router->get("/contato", "Site:contato", "site.contato");
+
 
 $router->group("/admin");
 $router->get("/", "Admin:home", "admin.home");
