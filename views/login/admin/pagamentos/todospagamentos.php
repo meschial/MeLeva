@@ -55,7 +55,9 @@
                           <div class="badge badge-primary"><?= $venda->status ?></div>
                         <?php } elseif ($venda->status == "Retenção temporária"){  ?>
                           <div class="badge badge-transparent"><?= $venda->status ?></div>
-                        <?php } ?>
+                        <?php } elseif ($venda->status == "Pago"){  ?>
+                              <div class="badge badge-success"><?= $venda->status ?></div>
+                          <?php } ?>
                       </td>
                     <td>
                       <a href="<?= $router->route('admin.pagamentosdetalhe', ['code'=>$venda->code]) ?>" class="btn btn-icon icon-left btn-info"><i class="fas fa-info-circle"></i>Ver Mais</a>
