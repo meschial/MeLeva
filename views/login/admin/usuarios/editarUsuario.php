@@ -220,7 +220,7 @@
                                 </div>
 
                             <div class="tab-pane fade" id="pessoais" role="tabpanel" aria-labelledby="profile-tab2">
-                              <?php if(!empty($documentos)):  foreach ($documentos as $userc):?>
+                              <?php if(!empty($documentos)):  foreach ($documentos as $userc): ?>
                                   <form method="post" class="needs-validation" action="<?= $router->route("app.home"); ?>" enctype="multipart/form-data">
                                       <div class="card-header">
                                           <h4>Editar Documentos do Usuario <?= $login->nome ?></h4>

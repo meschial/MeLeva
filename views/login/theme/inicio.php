@@ -15,7 +15,9 @@
                             um sistema de interface simples e de fácil acesso,
                             depois do cadastro aprovado qualquer pessoa pode levar ou enviar uma encomenda.
                             Basta fazer seu cadastro e achar o melhor preço</p>
+                        <?php if (empty($_SESSION['user'])): ?>
                         <a href="<?= $router->route("web.cadastrar");?>" class="secondary-btn">cadastre-se<span class="flaticon-next"></span></a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>

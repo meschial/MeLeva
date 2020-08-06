@@ -35,7 +35,7 @@
                                     <input type="text" value="<?= $userc->celular; ?>" data-mask="(99)99999-9999" placeholder="Digite seu número" class="form-control" name="celular">
                                 </div>
                             </div>
-                            <?php if (empty($userc)): ?>
+                            <?php if (empty($userc->cpf)): ?>
                                 <button type="submit" class="btn btn-success btn-lg btn-block active">Cadastrar</button>
                             <?php else: ?>
                                 <button type="submit" class="btn btn-primary btn-lg btn-block active">Atualizar</button>

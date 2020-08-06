@@ -155,11 +155,6 @@ foreach ($xml->shipping as $adress) {
 </section>
 
 
-<!-- Button trigger modal -->
-<button type="button" name="modal" class="btn btn-primary">
-    Launch static backdrop modal
-</button>
-
 <!-- Modal success-->
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
