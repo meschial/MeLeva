@@ -7,7 +7,7 @@
                 <div class="job-text">
                     <h1 style="color: #6c757d; text-align: center">Nova Rota</h1>
                     <ul class="mt-4">
-                        <?php if (!empty($ativo)): ?>
+                        <?php  if ($ativo === "S"): ?>
                         <form class="auth_form" action="<?= $router->route("app.novarota") ?>" method="post" enctype="multipart/form-data">
 
                             <div class="login_form_callback">

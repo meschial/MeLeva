@@ -519,7 +519,10 @@ class App extends Controller
             }
         }
 
-        $ativo = (new Motorista())->find("login_id = :login_id", "login_id={$_SESSION['user']}")->fetch(true);
+        $ativos = (new Motorista())->find("login_id = :login_id", "login_id={$_SESSION['user']}")->fetch(true);
+        foreach ($ativos as $at){
+            $ativo = $at->ativo;
+        }
 
         $head = $this->seo->optimize(
             "Bem vindo(a)",
