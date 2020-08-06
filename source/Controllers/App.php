@@ -328,6 +328,33 @@ class App extends Controller
 
     }
 
+    public function verdados()
+    {
+
+        if ($_GET['id']){
+            $user = (new User())->findById($_GET['id']);
+            $cell = (new DadosUser())->find("login_id = :id","id={$_GET['id']}")->fetch(true);
+        }
+
+        $ativo = "S";
+        $ativo = (new Motorista())->find("login_id = :login_id AND ativo = :ativo" , "login_id={$_SESSION["user"]} & ativo={$ativo}")->fetch(true);
+
+        $head = $this->seo->optimize(
+            "Bem vindo(a)",
+            site("desc"),
+            $this->router->route("app.rotafinalizada"),
+            routeImage("Cliente")
+        )->render();
+
+        echo $this->view->render("theme/rotas/verdados",[
+            "head" => $head,
+            "user" => $this->user,
+            "ativo" => $ativo,
+            "users" => $user,
+            "cells" => $cell
+        ]);
+    }
+
     public function saldo():void
     {
         $ativo = "S";

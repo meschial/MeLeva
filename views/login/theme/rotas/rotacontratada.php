@@ -47,14 +47,14 @@ foreach ($Item as $Itens) {
                                         <li class="mb-3"><h5>Descrição: <?= $rota->descricao?></h5></li>
                                         <li class="mb-3"><h5>Valor: <?= number_format($rota->valor,2,",",".");?></h5></li>
                                         <li class="mb-3"><h5>Status: <?= $status?></h5></li>
-                                        <input type="text" id="codee" name="codee" value="<?= $rota->code ?>">
+                                        <input type="hidden" id="codee" name="codee" value="<?= $rota->code ?>">
                                     </ul>
                                 </div>
                             </div>
                             <div class="job-btn align-self-center">
 
-                                <a href="<?= $router->route('app.motocancelarrota', ['id' => $rota->id]) ?>" class="btn btn-primary">Ver dados</a>
-                                <button name="devolver" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Devolver Pagamento</button>
+                                <a href="<?= $router->route('app.verdados', ['id' => $rota->login_id]) ?>" class="btn btn-primary">Ver dados</a>
+                                <button name="devolver" class="btn btn-icon icon-left btn-danger"><i class="fas fa-check"></i>Cancelar</button>
 
                             </div>
                         <?php endforeach; ?>
@@ -88,12 +88,12 @@ foreach ($Item as $Itens) {
                     <div class="swal-icon--success__hide-corners"></div>
                 </div>
             </div>
-            <div class="swal-title" >Atenção!!!</div>
-            <div class="swal-text">Pagamento Cancelado</div>
+            <div class="text-center" ><br><br><h1 style="color: red">Atenção!!!</h1><br><br></div>
+            <div class="text-center"><h3 style="color: darkred">Pagamento Cancelado :)</h3><br></div>
             <div class="swal-footer">
                 <div class="swal-button-container">
-                    <button class="swal-button swal-button--confirm" name="ok">OK</button>
-                </div>
+                    <button class="btn btn-outline-success" name="ok">OK</button>
+                </div><br>
             </div>
         </div>
     </div>
@@ -109,12 +109,12 @@ foreach ($Item as $Itens) {
                     <span class="swal-icon--error__line swal-icon--error__line--right"></span>
                 </div>
             </div>
-            <div class="swal-title" >Atenção!!!</div>
-            <div class="swal-text">Erro na tranzação</div>
+            <div class="text-center" ><br><br><h1 style="color: red">Atenção!!!</h1><br><br></div>
+            <div class="text-center"><h3 style="color: darkred">Erro na tranzação :(</h3><br></div>
             <div class="swal-footer">
-                <div class="swal-button-container">
-                    <button class="swal-button swal-button--confirm" name="ok">OK</button>
-                </div>
+                <div class="text-center">
+                    <button class="btn btn-outline-success" name="ok">OK</button>
+                </div><br>
             </div>
         </div>
     </div>
