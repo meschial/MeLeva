@@ -55,7 +55,7 @@
                                         <div class="invoice-detail-name"><b>Total</b></div>
                                         <div class="invoice-detail-value invoice-detail-value-lg">R$: <?= number_format($valor_descontado, 2, ',', ' ') ?></div>
                                     </div>
-                                    <button href="https://api.whatsapp.com/send?phone=5544999176602&text=Ola%20quero%20receber" class="btn-outline-success">Receber</button>
+                                    <a href="https://api.whatsapp.com/send?phone=5544999176602&text=Ola%20quero%20receber" class="btn-outline-success">Receber</a>
                                 <?php endforeach; endif;?>
                             </div>
 
