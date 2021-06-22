@@ -26,7 +26,7 @@
     "coffeecode/uploader": "^1.0",
     "coffeecode/cropper": "^1.0",
     "coffeecode/paginator": "1.0.*",
-    "phpmailer/phpmailer": "6.1.4",
+    "phpmailer/phpmailer": "6.5.0",
     "masterkey/valid-docs": "^1.2",
     "league/plates": "v4.0.0-alpha",
     "league/oauth2-facebook": "2.0.1",
